@@ -2,7 +2,11 @@ import React, { useRef, useEffect, useContext } from "react";
 import Header from "./Components/Home/Header";
 import Home from "./Components/Home/Home";
 import Footer from "./Components/Home/Footer";
-import Login from "./Components/login/Login";
+// Login
+import Login from "./Components/Admin/LoginAndSignUp/Login";
+import Register from "./Components/Admin/LoginAndSignUp/Register";
+import Reset from "./Components/Admin/LoginAndSignUp/Reset";
+import Dashboard from "./Components/Admin/Dashboard/Dashboard";
 
 // Users
 import CreateUser from "./Components/Users/CreateUser";
@@ -12,7 +16,6 @@ import UserContext from "./context/books";
 // Components
 import PrayerTimes from "./Components/Mosque/PrayerTimes";
 import Donate from "./Components/Donate/Donate";
-
 
 // UsersForPublic
 import ShowUserPublic from "./Components/UsersPublic/ShowUserPublic";
@@ -54,6 +57,9 @@ const App = () => {
         <Route path="/user/:id" element={<UserDetails />} />
         <Route path="donation" element={<Donate />} />
         <Route path="login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset" element={<Reset />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     )
   );
@@ -61,7 +67,6 @@ const App = () => {
   const scrollInto = useRef(null);
   useEffect(() => {
     scrollInto.current.scrollIntoView();
-  
   });
   return (
     <div ref={scrollInto}>

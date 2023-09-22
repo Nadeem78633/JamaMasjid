@@ -23,6 +23,7 @@ import { getAllTasks } from "../../firebase";
 function ShowUserPublic() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
 
   useEffect(() => {
     // Simulate a loading delay with setTimeout
@@ -34,8 +35,10 @@ function ShowUserPublic() {
         })
         .catch((error) => {
           console.error("Error fetching tasks:", error);
+          setError(error);
+          setLoading(false);
         });
-    }, .5000);
+    }, 0.5);
   }, []);
 
   return (
@@ -49,7 +52,7 @@ function ShowUserPublic() {
             height: "100vh",
           }}
         >
-          <CircularProgress />
+          <CircularProgress color="success" />
         </div>
       ) : (
         <Card style={{ marginTop: "100px" }}>
@@ -84,7 +87,7 @@ function ShowUserPublic() {
                                 background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                               }}
                             >
-                              {book.userName}
+                              {book.userName.slice(0, 1).toUpperCase()}
                             </Avatar>
                           </ListItemIcon>
                           <ListItemText>
