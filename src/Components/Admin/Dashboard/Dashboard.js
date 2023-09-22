@@ -1,17 +1,14 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Dashboard = () => {
-  const isScreenSmall = useMediaQuery("(min-width:900px)");
   return (
     <>
-      <Grid container spacing={2} style={{ background: "#F8FAFF" }}>
-        {isScreenSmall && <Sidebar />}
-
+      <Grid
+        container
+        spacing={2}
+        style={{ background: "#F8FAFF", marginTop: "100px" }}
+      >
         <Grid
           item
           sm={12}
@@ -21,9 +18,7 @@ const Dashboard = () => {
             paddingRight: "20px",
           }}
         >
-          <Header />
-
-       
+          Dashboard
         </Grid>
       </Grid>
     </>
