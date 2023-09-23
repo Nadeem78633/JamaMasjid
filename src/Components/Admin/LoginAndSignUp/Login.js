@@ -27,8 +27,8 @@ const Login = () => {
       container
       style={{
         backgroundImage: `url(${gradient})`,
-        width: '100%',
-        height:'100%'
+        width: "100%",
+        height: "100%",
       }}
     >
       <Grid
@@ -55,7 +55,18 @@ const Login = () => {
             flexDirection: "column",
             alignItems: "center",
 
-            width: "100%",
+            "@media (max-width: 1440px)": {
+              width: "100%", // You can adjust the width as needed
+            },
+            "@media (max-width: 600px)": {
+              width: "60%", // You can adjust the width as needed
+            },
+            "@media (max-width: 424px)": {
+              width: "50%", // You can adjust the width as needed
+            },
+            "@media (max-width: 320px)": {
+              width: "10%", // You can adjust the width as needed
+            },
           }}
         >
           <CardContent>
