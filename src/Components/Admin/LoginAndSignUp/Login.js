@@ -27,6 +27,8 @@ const Login = () => {
       container
       style={{
         backgroundImage: `url(${gradient})`,
+        width: '100%',
+        height:'100%'
       }}
     >
       <Grid
