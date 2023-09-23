@@ -36,7 +36,13 @@ const AddUser = () => {
     <div>
       <AddCircleOutlineOutlinedIcon
         onClick={handleClickOpen}
-        style={{ height: "50px", width: "50px", color: "white" }}
+        style={{
+          height: "50px",
+          width: "50px",
+          color: "white",
+          cursor: "pointer",
+          marginTop: "10px",
+        }}
       />
 
       <Dialog
