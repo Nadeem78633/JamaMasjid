@@ -1,7 +1,8 @@
 import React from "react";
-import { Grid, Card, CardContent, Typography } from "@mui/material";
+import { Grid, Card, CardContent, Typography, Avatar } from "@mui/material";
 
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 import { NavLink } from "react-router-dom";
 import AddUser from "./AddUser";
@@ -23,7 +24,6 @@ const Dashboard = () => {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
               }}
             >
               <div
@@ -33,17 +33,17 @@ const Dashboard = () => {
                   flexDirection: "column", // Stack items vertically
                 }}
               >
+                <AddUser />
                 <Typography
                   style={{
                     fontFamily: "Poppins",
                     fontSize: "18px",
                     fontWeight: "600",
-                    color: "white",
+                    color: "black",
                   }}
                 >
                   Add user
                 </Typography>
-                <AddUser />
               </div>
             </CardContent>
           </Card>
@@ -118,13 +118,13 @@ const Dashboard = () => {
                     color: "white",
                   }}
                 >
-                  Edit & Delete
+                  Delete & Edit
                 </Typography>
                 <NavLink
                   to="/showUserPublic"
                   style={{ textDecoration: "none", color: "white" }}
                 >
-                  <PeopleAltRoundedIcon
+                  <DeleteRoundedIcon
                     style={{
                       height: "50px",
                       width: "50px",

@@ -11,6 +11,8 @@ import CreateUser from "../../Users/CreateUser";
 import Typography from "@mui/material/Typography";
 
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import Avatar from "@mui/material/Avatar";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 import Slide from "@mui/material/Slide";
 
@@ -21,8 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const AddUser = () => {
   const [open, setOpen] = React.useState(false);
 
-  // Hovered
-  const [iconHovered, setIconHovered] = useState(false);
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,16 +35,26 @@ const AddUser = () => {
 
   return (
     <div>
-      <AddCircleOutlineOutlinedIcon
-        onClick={handleClickOpen}
+      <Avatar
         style={{
-          height: "50px",
-          width: "50px",
-          color: "white",
-          cursor: "pointer",
-          marginTop: "10px",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "#eafaf7",
         }}
-      />
+      >
+        <AddRoundedIcon
+          onClick={handleClickOpen}
+          style={{
+            height: "50px",
+            width: "50px",
+            color:'#01c2a4',
+            cursor: "pointer",
+          }}
+        />
+      </Avatar>
 
       <Dialog
         open={open}
