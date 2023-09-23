@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Card, CardContent } from "@mui/material";
 
 const Dashboard = () => {
   return (
@@ -7,18 +7,28 @@ const Dashboard = () => {
       <Grid
         container
         spacing={2}
-        style={{ background: "#F8FAFF", marginTop: "100px" }}
+        style={{
+          marginTop: "100px",
+          paddingLeft: "100px",
+          paddingRight: "100px",
+        }}
       >
-        <Grid
-          item
-          sm={12}
-          md={8.5} // Use 12 columns for all screen sizes
-          style={{
-            background: "#F8FAFF",
-            paddingRight: "20px",
-          }}
-        >
-          Dashboard
+        <Grid item xs={6} md={6} sm={6}>
+          <Card>
+            <CardContent
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              gfdgfg
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={6} sm={6}>
+          <Card>
+            <CardContent>2</CardContent>
+          </Card>
         </Grid>
       </Grid>
     </>

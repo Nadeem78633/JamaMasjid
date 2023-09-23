@@ -14,188 +14,181 @@ const Login = () => {
   const [user, loading, error] = useAuthState(auth);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     if (loading) {
-      // maybe trigger a loading screen
       return;
     }
     if (user) navigate("/dashboard");
   }, [user, loading]);
 
   return (
-    <Grid
-      container
-      style={{
-        backgroundImage: `url(${gradient})`,
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <>
       <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
+        container
         style={{
-          marginTop: "90px",
-          marginBottom: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          backgroundImage: `url(${gradient})`,
+          width: "100%",
+          height: "100%",
+          paddingLeft: '20px',
+          paddingRight:'20px'
         }}
       >
-        <Card
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
           style={{
-            height: "500px",
-            background: "#FFFFFF",
-
-            marginTop: "60px",
-            marginBottom: "40px",
+            marginTop: "90px",
+            marginBottom: "20px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-
-            "@media (max-width: 1440px)": {
-              width: "100%", // You can adjust the width as needed
-            },
-            "@media (max-width: 600px)": {
-              width: "60%", // You can adjust the width as needed
-            },
-            "@media (max-width: 424px)": {
-              width: "50%", // You can adjust the width as needed
-            },
-            "@media (max-width: 320px)": {
-              width: "10%", // You can adjust the width as needed
-            },
           }}
         >
-          <CardContent>
-            <Typography
-              style={{
-                height: "48.3px",
+          <Card
+            style={{
+              height: "500px",
+              background: "#FFFFFF",
 
-                fontFamily: "Poppins",
-                fontStyle: "normal",
-                fontWeight: "700",
-                fontSize: "36px",
-                lineHeight: "44px",
-                textAlign: "center",
+              marginTop: "60px",
+              marginBottom: "40px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
 
-                color: "#000000",
-                marginTop: "40px",
-                marginBottom: "20px",
-              }}
-            >
-              Login
-            </Typography>
-            <Typography
-              style={{
-                height: "20.86px",
-                fontFamily: "Poppins",
-                fontStyle: "normal",
-                fontWeight: "400",
-                fontSize: "16px",
-                lineHeight: "19px",
-                marginBottom: "10px",
-              }}
-            >
-              Email address
-            </Typography>
-            <TextField
-              variant="standard"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{
-                width: "100%",
-                height: "43.91px",
-                fontFamily: "Poppins",
-                fontStyle: "normal",
-                fontWeight: "400",
-                fontSize: "16px",
-                lineHeight: "19px",
-              }}
-              type="text"
-              placeholder="Email"
-            />
-            <Typography
-              style={{
-                height: "20.86px",
-                fontFamily: "Poppins",
-                fontStyle: "normal",
-                fontWeight: "400",
-                fontSize: "16px",
-                lineHeight: "19px",
-                marginBottom: "10px",
-                marginTop: "10px",
-              }}
-            >
-              Password
-            </Typography>
-            <TextField
-              variant="standard"
-              style={{
-                width: "100%",
-                height: "43.91px",
-                fontFamily: "Poppins",
-                fontStyle: "normal",
-                fontWeight: "400",
-                fontSize: "16px",
-                lineHeight: "19px",
-              }}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Password"
-            />
-            <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-              <Link
-                to="/reset"
+              width: "100%",
+            }}
+          >
+            <CardContent>
+              <Typography
                 style={{
-                  width: "100%",
+                  height: "48.3px",
+
+                  fontFamily: "Poppins",
+                  fontStyle: "normal",
+                  fontWeight: "700",
+                  fontSize: "36px",
+                  lineHeight: "44px",
+                  textAlign: "center",
+
+                  color: "#000000",
+                  marginTop: "40px",
+                  marginBottom: "20px",
+                }}
+              >
+                Login
+              </Typography>
+              <Typography
+                style={{
                   height: "20.86px",
                   fontFamily: "Poppins",
                   fontStyle: "normal",
                   fontWeight: "400",
                   fontSize: "16px",
                   lineHeight: "19px",
-                  /* Link */
-                  color: "gray",
-                  textDecoration: "none",
-                  marginTop: "20px",
+                  marginBottom: "10px",
                 }}
               >
-                Forgot Password?
-              </Link>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Button
-                onClick={() => logInWithEmailAndPassword(email, password)}
-                variant="contained"
+                Email address
+              </Typography>
+              <TextField
+                variant="standard"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 style={{
-                  textTransform: "none",
-                  width: "356.77px",
+                  width: "100%",
                   height: "43.91px",
-                  background: "linear-gradient(45deg, #dd47f9, #6fc9e0)",
-                  borderRadius: "10px",
                   fontFamily: "Poppins",
                   fontStyle: "normal",
-                  fontWeight: "600",
+                  fontWeight: "400",
                   fontSize: "16px",
+                  lineHeight: "19px",
+                }}
+                type="text"
+                placeholder="Email"
+              />
+              <Typography
+                style={{
+                  height: "20.86px",
+                  fontFamily: "Poppins",
+                  fontStyle: "normal",
+                  fontWeight: "400",
+                  fontSize: "16px",
+                  lineHeight: "19px",
+                  marginBottom: "10px",
+                  marginTop: "10px",
                 }}
               >
-                LOGIN
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+                Password
+              </Typography>
+              <TextField
+                variant="standard"
+                style={{
+                  width: "100%",
+                  height: "43.91px",
+                  fontFamily: "Poppins",
+                  fontStyle: "normal",
+                  fontWeight: "400",
+                  fontSize: "16px",
+                  lineHeight: "19px",
+                }}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Password"
+              />
+              <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                <Link
+                  to="/reset"
+                  style={{
+                    width: "100%",
+                    height: "20.86px",
+                    fontFamily: "Poppins",
+                    fontStyle: "normal",
+                    fontWeight: "400",
+                    fontSize: "16px",
+                    lineHeight: "19px",
+                    /* Link */
+                    color: "gray",
+                    textDecoration: "none",
+                    marginTop: "20px",
+                  }}
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  onClick={() => logInWithEmailAndPassword(email, password)}
+                  variant="contained"
+                  style={{
+                    textTransform: "none",
+                    width: "356.77px",
+                    height: "43.91px",
+                    background: "linear-gradient(45deg, #dd47f9, #6fc9e0)",
+                    borderRadius: "10px",
+                    fontFamily: "Poppins",
+                    fontStyle: "normal",
+                    fontWeight: "600",
+                    fontSize: "16px",
+                  }}
+                >
+                  LOGIN
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
