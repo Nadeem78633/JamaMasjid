@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 
-
 import { NavLink } from "react-router-dom";
 import AddUser from "./AddUser";
 const Dashboard = () => {
@@ -17,12 +16,7 @@ const Dashboard = () => {
         }}
       >
         <Grid item xs={6} md={6} sm={6}>
-          <Card
-            style={{
-              boxShadow:
-                "0 2px 4px #DF98FA, 0 4px 8px #9055FF , 0 8px 16px #9055FF ",
-            }}
-          >
+          <Card>
             <CardContent
               style={{
                 display: "flex",
