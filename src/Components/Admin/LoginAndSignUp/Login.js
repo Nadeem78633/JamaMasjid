@@ -4,19 +4,9 @@ import { Grid, Card, CardContent, Typography, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 
-// Svg icons
-import circle from "../../icons/circle.svg";
-import greenCircle from "../../icons/greenCircle.svg";
-
-import wave from "../../icons/wave.svg";
-
 import gradient from "../../icons/gradient.svg";
 
-import {
-  auth,
-  logInWithEmailAndPassword,
-  signInWithGoogle,
-} from "../../../firebase";
+import { auth, logInWithEmailAndPassword } from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -53,7 +43,6 @@ const Login = () => {
         }}
       >
         <Card
-          xs={"100px"}
           style={{
             height: "500px",
             background: "#FFFFFF",
@@ -63,8 +52,8 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            position: "relative",
-            padding: "20px",
+
+            width: "100%",
           }}
         >
           <CardContent>
@@ -149,7 +138,7 @@ const Login = () => {
               <Link
                 to="/reset"
                 style={{
-                  width: "136.12px",
+                  width: "100%",
                   height: "20.86px",
                   fontFamily: "Poppins",
                   fontStyle: "normal",
