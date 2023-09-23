@@ -30,8 +30,6 @@ const Login = () => {
           backgroundImage: `url(${gradient})`,
           width: "100%",
           height: "100%",
-          paddingLeft: '20px',
-          paddingRight:'20px'
         }}
       >
         <Grid
