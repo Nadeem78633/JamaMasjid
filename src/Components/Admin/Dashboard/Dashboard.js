@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 
+
 import { NavLink } from "react-router-dom";
 import AddUser from "./AddUser";
 const Dashboard = () => {
@@ -32,7 +33,6 @@ const Dashboard = () => {
                 }}
               >
               
-                <AddUser />
                 <Typography
                   style={{
                     textAlign: "center",
@@ -43,6 +43,7 @@ const Dashboard = () => {
                   }}
                 >
                   Add user
+                  <AddUser/>
                 </Typography>
               </div>
             </CardContent>

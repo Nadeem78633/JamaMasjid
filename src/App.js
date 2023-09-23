@@ -28,6 +28,7 @@ import {
 } from "react-router-dom";
 import { RouterProvider } from "react-router";
 import UserDetails from "./Components/Users/UserDetails";
+import AddUser from "./Components/Admin/Dashboard/AddUser";
 
 const App = () => {
   const { fetchBooks } = useContext(UserContext);
@@ -50,7 +51,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="prayer" element={<PrayerTimes />} />
 
-        <Route path="createUser" element={<CreateUser />} />
+        <Route path="addUser" element={<AddUser />} />
         <Route path="userList" element={<UserList />} />
         <Route path="showUserPublic" element={<ShowUserPublic />} />
 

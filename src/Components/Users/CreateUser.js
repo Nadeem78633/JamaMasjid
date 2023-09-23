@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useBooksContext from "../../hooks/use-books-context";
 import { createTask } from "../../firebase";
 
 // Grid
@@ -21,7 +20,6 @@ function CreateUser() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isError, setIsError] = useState(false);
   const [fatherName, setFatherName] = useState("");
- 
 
   const handleChange = (event) => {
     setUserName(event.target.value);
@@ -48,15 +46,14 @@ function CreateUser() {
       setIsError(true);
       return; // Return early without creating the book
     }
- createTask(userName, phoneNumber, fatherName, new Date().getFullYear(), 0); // Replace 0 with the actual amount value
+    createTask(userName, phoneNumber, fatherName, new Date().getFullYear(), 0); // Replace 0 with the actual amount value
     setUserName("");
     setPhoneNumber("");
     setFatherName("");
     // Calling Toastify function inside the submit
     displayLoginNotification();
-      console.log(userName, phoneNumber, fatherName);
+    console.log(userName, phoneNumber, fatherName);
   };
-
 
   return (
     <>
@@ -65,16 +62,16 @@ function CreateUser() {
           <Grid
             item
             xs={12}
+            sm={12}
             md={12}
             style={{
               flex: 1,
               justifyContent: "center",
               display: "flex",
               alignItems: "center",
-              marginTop: "50px",
             }}
           >
-            <Card>
+            <Card style={{ boxShadow: "none" }}>
               <CardContent>
                 <Typography
                   variant="h4"
@@ -86,12 +83,11 @@ function CreateUser() {
                     display: "flex",
                     alignItems: "center",
                   }}
-                >
-                  Add a User
-                </Typography>
+                ></Typography>
                 <form onSubmit={handleSubmit}>
                   <TextField
-                    variant="outlined"
+                    variant="standard"
+                    size="small"
                     required
                     label="Name"
                     type="string"
@@ -105,36 +101,35 @@ function CreateUser() {
                       justifyContent: "center",
                       display: "flex",
                       alignItems: "center",
-                      marginTop: "20px",
                     }}
                   />
                   <br />
                   <TextField
-                    variant="outlined"
+                    variant="standard"
+                    size="small"
                     required
                     label="Father"
                     type="string"
                     value={fatherName}
                     onChange={handleFather}
                     component="div"
-                  
                     color="secondary"
                     style={{
                       flex: 1,
                       justifyContent: "center",
                       display: "flex",
                       alignItems: "center",
-                      marginTop: "20px",
                     }}
                   />
                   <br />
                   <TextField
+                    variant="standard"
+                    size="small"
                     helperText={isError ? "Number should be 10 digits" : ""}
                     label="Number"
                     required
                     value={phoneNumber}
                     onChange={handleNumber}
-                    variant="outlined"
                     component="div"
                     error={isError}
                     type="phoneNumber"
@@ -144,7 +139,6 @@ function CreateUser() {
                       justifyContent: "center",
                       display: "flex",
                       alignItems: "center",
-                      marginTop: "20px",
                     }}
                   />
                   <br />
@@ -156,10 +150,13 @@ function CreateUser() {
                       justifyContent: "center",
                       alignItems: "center",
                       margin: "0 auto",
-                      backgroundColor: "#5e3afc",
+                      background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                      textTransform: "none",
+                      fontSize: "16px",
+                      fontWeight: 500,
                     }}
                   >
-                    Create !
+                    Add
                   </Button>
                 </form>
               </CardContent>
