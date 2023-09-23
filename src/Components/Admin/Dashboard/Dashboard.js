@@ -17,7 +17,12 @@ const Dashboard = () => {
         }}
       >
         <Grid item xs={6} md={6} sm={6}>
-          <Card>
+          <Card
+            style={{
+              boxShadow:
+                "0 2px 4px #DF98FA, 0 4px 8px #9055FF , 0 8px 16px #9055FF ",
+            }}
+          >
             <CardContent
               style={{
                 display: "flex",
@@ -32,7 +37,6 @@ const Dashboard = () => {
                   flexDirection: "column", // Stack items vertically
                 }}
               >
-              
                 <Typography
                   style={{
                     textAlign: "center",
@@ -43,7 +47,7 @@ const Dashboard = () => {
                   }}
                 >
                   Add user
-                  <AddUser/>
+                  <AddUser />
                 </Typography>
               </div>
             </CardContent>
