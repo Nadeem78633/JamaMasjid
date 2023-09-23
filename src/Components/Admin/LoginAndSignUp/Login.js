@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Grid, Card, CardContent, Typography, Button } from "@mui/material";
 
 import { Link, useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
 
+// Svg icons
+import circle from "../../icons/circle.svg";
+import greenCircle from "../../icons/greenCircle.svg";
 
-import { auth ,logInWithEmailAndPassword,signInWithGoogle} from "../../../firebase";
+import wave from "../../icons/wave.svg";
+
+import gradient from "../../icons/gradient.svg";
+
+import {
+  auth,
+  logInWithEmailAndPassword,
+  signInWithGoogle,
+} from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,259 +31,168 @@ const Login = () => {
     }
     if (user) navigate("/dashboard");
   }, [user, loading]);
+
   return (
-    <Grid item xs={12} sm={12} md={6} style={{ background: " #F8FAFF" }}>
-      <Card style={{ background: " #F8FAFF", boxShadow: "none" }}>
-        <CardContent>
-          <div
-            style={{
-              marginTop: "100px",
-            }}
-          >
+    <Grid
+      container
+      style={{
+        backgroundImage: `url(${gradient})`,
+      }}
+    >
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        style={{
+          marginTop: "90px",
+          marginBottom: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Card
+          xs={"100px"}
+          style={{
+            height: "500px",
+            background: "#FFFFFF",
+
+            marginTop: "60px",
+            marginBottom: "40px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            position: "relative",
+            padding: "20px",
+          }}
+        >
+          <CardContent>
             <Typography
               style={{
-                /* Sign In */
-
-                width: "143.81px",
                 height: "48.3px",
-                left: "813.18px",
-                top: "235.32px",
 
-                fontFamily: "Montserrat",
+                fontFamily: "Poppins",
                 fontStyle: "normal",
                 fontWeight: "700",
                 fontSize: "36px",
                 lineHeight: "44px",
+                textAlign: "center",
 
                 color: "#000000",
+                marginTop: "40px",
+                marginBottom: "20px",
               }}
             >
-              Sign In
+              Login
             </Typography>
-          </div>
-          <Typography
-            style={{
-              /* Sign in to your account */
-              marginTop: "5px",
-
-              height: "20.86px",
-              left: "813.18px",
-              top: "289.11px",
-
-              fontFamily: "Poppins",
-              fontStyle: "normal",
-              fontWeight: "400",
-              fontSize: "16px",
-              lineHeight: "19px",
-
-              color: "#000000",
-            }}
-          >
-            Sign into your account
-          </Typography>
-          <div style={{ marginTop: "20px" }}>
-            <Button
-              onClick={signInWithGoogle}
-              variant="contained"
+            <Typography
               style={{
-                background: "#FFFFFF",
-                borderRadius: "10px",
-                fontFamily: "Montserrat",
+                height: "20.86px",
+                fontFamily: "Poppins",
                 fontStyle: "normal",
                 fontWeight: "400",
-                fontSize: "12px",
-                lineHeight: "15px",
-                width: "197.6px",
-                height: "32.93px",
-                /* Secondary Text */
-                color: "#858585",
-                textTransform: "none",
+                fontSize: "16px",
+                lineHeight: "19px",
+                marginBottom: "10px",
               }}
             >
-              <img
-                src="/icons/google.svg"
-                style={{
-                  width: "15.37px",
-                  height: "15.37px",
-                  marginRight: "10px",
-                }}
-              />
-              Sign in With google
-            </Button>
-            <Button
-              variant="contained"
+              Email address
+            </Typography>
+            <TextField
+              variant="standard"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{
-                background: "#FFFFFF",
-                borderRadius: "10px",
-                fontFamily: "Montserrat",
+                width: "100%",
+                height: "43.91px",
+                fontFamily: "Poppins",
                 fontStyle: "normal",
                 fontWeight: "400",
-                fontSize: "12px",
-                lineHeight: "15px",
-                width: "197.6px",
-                height: "32.93px",
-                /* Secondary Text */
-                color: "#858585",
-                textTransform: "none",
-                marginLeft: "28px",
+                fontSize: "16px",
+                lineHeight: "19px",
+              }}
+              type="text"
+              placeholder="Email"
+            />
+            <Typography
+              style={{
+                height: "20.86px",
+                fontFamily: "Poppins",
+                fontStyle: "normal",
+                fontWeight: "400",
+                fontSize: "16px",
+                lineHeight: "19px",
+                marginBottom: "10px",
+                marginTop: "10px",
               }}
             >
-              <img
-                src="/icons/apple.svg"
+              Password
+            </Typography>
+            <TextField
+              variant="standard"
+              style={{
+                width: "100%",
+                height: "43.91px",
+                fontFamily: "Poppins",
+                fontStyle: "normal",
+                fontWeight: "400",
+                fontSize: "16px",
+                lineHeight: "19px",
+              }}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Password"
+            />
+            <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+              <Link
+                to="/reset"
                 style={{
-                  width: "15.37px",
-                  height: "15.37px",
-                  marginRight: "10px",
-                }}
-              />
-              Sign in With Apple
-            </Button>
-          </div>
-          <Card
-            style={{
-              width: "422.64px",
-              height: "390.8px",
-              background: "#FFFFFF",
-              borderRadius: "20px",
-              marginTop: "40px",
-            }}
-          >
-            <CardContent style={{ margin: "auto", marginTop: "20px" }}>
-              <Typography
-                style={{
+                  width: "136.12px",
                   height: "20.86px",
                   fontFamily: "Poppins",
                   fontStyle: "normal",
                   fontWeight: "400",
                   fontSize: "16px",
                   lineHeight: "19px",
-                  marginBottom: "10px",
-                }}
-              >
-                Email address
-              </Typography>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: "356.77px",
-                  height: "43.91px",
-                  fontFamily: "Poppins",
-                  fontStyle: "normal",
-                  fontWeight: "400",
-                  fontSize: "16px",
-                  lineHeight: "19px",
-                  background: "#F5F5F5",
-                  borderRadius: "10px",
-                  border: "2px solid #F5F5F5",
-                  paddingLeft: "20px",
-                }}
-                type="text"
-                placeholder="Email"
-              />
-              <Typography
-                style={{
-                  height: "20.86px",
-                  fontFamily: "Poppins",
-                  fontStyle: "normal",
-                  fontWeight: "400",
-                  fontSize: "16px",
-                  lineHeight: "19px",
-                  marginBottom: "10px",
-                  marginTop: "10px",
-                }}
-              >
-                Password
-              </Typography>
-              <input
-                style={{
-                  width: "356.77px",
-                  height: "43.91px",
-                  fontFamily: "Poppins",
-                  fontStyle: "normal",
-                  fontWeight: "400",
-                  fontSize: "16px",
-                  lineHeight: "19px",
-                  background: "#F5F5F5",
-                  borderRadius: "10px",
-                  border: "2px solid #F5F5F5",
-                  paddingLeft: "20px",
-                }}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-              />
-              <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-                <Link
-                  to="/reset"
-                  style={{
-                    width: "136.12px",
-                    height: "20.86px",
-                    fontFamily: "Poppins",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    fontSize: "16px",
-                    lineHeight: "19px",
-                    /* Link */
-                    color: "#346BD5",
-                    textDecoration: "none",
-                    marginTop: "20px",
-                  }}
-                >
-                  Forgot Password?
-                </Link>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Button
-                  onClick={() => logInWithEmailAndPassword(email, password)}
-                  variant="contained"
-                  style={{
-                    textTransform: "none",
-                    background: "#4285F4",
-                    borderRadius: "10px",
-                    width: "356.77px",
-                    height: "43.91px",
-                  }}
-                >
-                  Sign in
-                </Button>
-              </div>
-              <Typography
-                style={{
-                  textAlign: "center",
+                  /* Link */
+                  color: "gray",
+                  textDecoration: "none",
                   marginTop: "20px",
-                  height: "20.86px",
-                  fontFamily: "Poppins",
-                  fontStyle: "normal",
-                  fontWeight: "400",
-                  fontSize: "16px",
-                  lineHeight: "19px",
-                  color: "#858585",
                 }}
               >
-                Don't have an account
-                <Link
-                  to="/register"
-                  style={{
-                    color: "#4285F4",
-                    textDecoration: "none",
-                    marginLeft: "10px",
-                  }}
-                >
-                  Register here
-                </Link>
-              </Typography>
-            </CardContent>
-          </Card>
-        </CardContent>
-      </Card>
+                Forgot Password?
+              </Link>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                onClick={() => logInWithEmailAndPassword(email, password)}
+                variant="contained"
+                style={{
+                  textTransform: "none",
+                  width: "356.77px",
+                  height: "43.91px",
+                  background: "linear-gradient(45deg, #dd47f9, #6fc9e0)",
+                  borderRadius: "10px",
+                  fontFamily: "Poppins",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: "16px",
+                }}
+              >
+                LOGIN
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </Grid>
     </Grid>
   );
 };
