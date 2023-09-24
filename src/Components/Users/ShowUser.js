@@ -24,6 +24,9 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Avatar from "@mui/material/Avatar";
 import { NavLink } from "react-router-dom";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+
 function ShowUser() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -133,7 +136,7 @@ function ShowUser() {
                               <ListItemIcon>
                                 <Avatar
                                   disablePadding
-                                  variant="square"
+                                  variant="circular"
                                   style={{
                                     color: "white",
                                     fontFamily: "Poppins",
@@ -194,18 +197,20 @@ function ShowUser() {
                                     fontWeight: "500",
                                     fontSize: "14px",
                                     background:
-                                      "green"
+                                      "linear-gradient(135deg, #05c466 0%, #006400 100%)",
                                   }}
                                   onClick={() => handleEditClick(task.id)}
                                 >
-                                  Edit
+                                  <EditOutlinedIcon />
                                 </Button>
                                 <Button
                                   size="small"
                                   variant="contained"
                                   style={{
                                     textTransform: "none",
-                                    backgroundColor: "red",
+                                    background:
+                                      "linear-gradient(135deg, #f93227 0%, #8B0000 100%)",
+
                                     marginLeft: "10px",
                                     fontFamily: "Poppins",
                                     fontStyle: "normal",
@@ -214,7 +219,7 @@ function ShowUser() {
                                   }}
                                   onClick={() => handleDeleteTask(task.id)}
                                 >
-                                  Delete
+                                  <DeleteIcon />
                                 </Button>
                               </div>
                             </ListItem>
