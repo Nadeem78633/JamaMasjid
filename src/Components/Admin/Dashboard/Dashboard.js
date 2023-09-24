@@ -40,7 +40,7 @@ const Dashboard = () => {
                     fontSize: "18px",
                     fontWeight: "600",
                     color: "black",
-                    marginTop:'8px'
+                    marginTop: "8px",
                   }}
                 >
                   Add user
@@ -50,7 +50,12 @@ const Dashboard = () => {
           </Card>
         </Grid>
         <Grid item xs={6} md={6} sm={6}>
-          <Card style={{ background: "#99de9d" }}>
+          <Card
+            style={{
+          
+              background: `linear-gradient(135deg, #99de9d 0%,  #013220 100%)`,
+            }}
+          >
             <CardContent
               style={{
                 display: "flex",
@@ -96,7 +101,11 @@ const Dashboard = () => {
 
         {/* Delete edit users */}
         <Grid item xs={12} md={12} sm={12}>
-          <Card style={{ background: "#ff7979" }}>
+          <Card
+            style={{
+              background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+            }}
+          >
             <CardContent
               style={{
                 display: "flex",
