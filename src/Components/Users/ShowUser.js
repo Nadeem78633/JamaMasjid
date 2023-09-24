@@ -88,7 +88,12 @@ function ShowUser() {
     );
   }
 
-  const avatarColors = ["#fdf2b3", "#d1eaed", "#ffdada", "#eafff4"];
+  // const avatarColors = [
+  //   "linear-gradient(135deg, #6016e5 0%, #16e560 100%)",
+
+  //   "#fe332d",
+  //   "#535353",
+  // ];
 
   console.log(registeredUsers);
   return (
@@ -128,14 +133,15 @@ function ShowUser() {
                               <ListItemIcon>
                                 <Avatar
                                   disablePadding
+                                  variant="square"
                                   style={{
                                     color: "white",
                                     fontFamily: "Poppins",
                                     fontWeight: "600",
-                                    width: '50px',
-                                    height:'50px'
-                                  }}
-                                  sx={{
+                                    fontSize: "30px",
+                                    width: "50px",
+                                    height: "50px",
+                                    marginRight: "10px",
                                     background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                                   }}
                                 >
@@ -187,6 +193,8 @@ function ShowUser() {
                                     fontStyle: "normal",
                                     fontWeight: "500",
                                     fontSize: "14px",
+                                    background:
+                                      "green"
                                   }}
                                   onClick={() => handleEditClick(task.id)}
                                 >
