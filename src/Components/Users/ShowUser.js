@@ -117,9 +117,9 @@ function ShowUser() {
             >
               Users
             </Typography>
-            <Grid container spacing={2} style={{ margin: "auto" }}>
+            <Grid container spacing={2} >
               {tasks.map((task, index) => (
-                <Grid key={task.id} item xs={12} md={6} sm={12}>
+                <Grid key={task.id} item xs={12} md={6} sm={12} >
                   {editingTask === task.id ? (
                     <TaskEditForm
                       task={task}
