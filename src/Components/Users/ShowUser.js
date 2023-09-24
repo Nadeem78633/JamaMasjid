@@ -242,31 +242,45 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
   // Initialize editedData state with the task prop
   const [editedData, setEditedData] = useState(task);
   const [updatedData, setUpdatedData] = useState(task);
+  const [isError, setIsError] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // Update the editedData state when input changes
-    setEditedData({ ...editedData, [name]: value });
+
+    if (name === "phoneNumber") {
+      // Truncate the input value to 10 digits
+      let inputValue = value.slice(0, 10);
+      setEditedData({ ...editedData, [name]: inputValue });
+
+      // Set isError if the length is not 10
+      setIsError(inputValue.length !== 10);
+    } else {
+      setEditedData({ ...editedData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(editedData); // Pass editedData to onSave
-    setUpdatedData(editedData); // Update updatedData after saving
-    setOpen(false);
-  };
-
-  const handleClose = () => {
-    
-    setOpen(false);
+    if (
+      editedData.userName.trim() === "" ||
+      editedData.fatherName.trim() === "" ||
+      editedData.phoneNumber.length < 10
+    ) {
+      // Provide user feedback or handle the case when the input is not valid.
+      console.log("Please fill in all required fields.");
+    } else {
+      // Only save and close the dialog when all input is valid
+      onSave(editedData);
+      setUpdatedData(editedData);
+      setOpen(false);
+    }
   };
 
   return (
     <>
       <Dialog
         open={open}
-        onClose={handleClose}
-        onBackdropClick={handleSubmit} 
+        onClose={handleSubmit}
         TransitionComponent={Transition}
       >
         <DialogTitle>
@@ -303,6 +317,8 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
           <form onSubmit={handleSubmit}>
             <div>
               <TextField
+                required
+                variant="standard"
                 size="small"
                 label="Username"
                 name="userName"
@@ -313,6 +329,8 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
             </div>
             <div>
               <TextField
+                required
+                variant="standard"
                 size="small"
                 label="Father's Name"
                 name="fatherName"
@@ -323,10 +341,16 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
             </div>
             <div>
               <TextField
+                required
+                variant="standard"
+                helperText={isError ? "Number should be 10 digits" : ""}
                 size="small"
                 label="Phone Number"
                 name="phoneNumber"
-                type="text"
+                component="div"
+                error={isError}
+                type="phoneNumber"
+                color="secondary"
                 value={editedData.phoneNumber}
                 onChange={handleInputChange}
               />
@@ -348,6 +372,5 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
     </>
   );
 }
-
 
 export default ShowUser;
