@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Card, CardContent, Typography, Avatar } from "@mui/material";
 
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
@@ -6,6 +5,14 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 import { NavLink } from "react-router-dom";
 import AddUser from "./AddUser";
+import { useAuthState } from "react-firebase-hooks/auth";
+import glass1 from '../../images/glass1.jpg'
+import blackBack from '../../images/blackBack.png'
+import blue from '../../images/blue.jpg'
+
+import wallpaper4 from '../../images/wallpaper_4.jpg'
+
+
 const Dashboard = () => {
   return (
     <>
@@ -13,13 +20,28 @@ const Dashboard = () => {
         container
         spacing={2}
         style={{
-          marginTop: "100px",
+          paddingTop: "100px",
           paddingLeft: "5%",
           paddingRight: "5%",
+          backgroundImage: `url(${wallpaper4})`,
+          backgroundSize: "cover", // Cover the entire background
+          backgroundRepeat: "no-repeat", // Prevent image repetition
+          backgroundPosition: "center center",
+       
+        
         }}
       >
         <Grid item xs={6} md={6} sm={6}>
-          <Card>
+          <Card
+            style={{
+              background: "rgba(255, 255, 255, 0.2)",
+
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(5px)",
+              WebkitBackdropFilter: "blur(5px)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+            }}
+          >
             <CardContent
               style={{
                 display: "flex",
@@ -39,7 +61,7 @@ const Dashboard = () => {
                     fontFamily: "Poppins",
                     fontSize: "18px",
                     fontWeight: "600",
-                    color: "black",
+                    color: "white",
                     marginTop: "8px",
                   }}
                 >
@@ -52,7 +74,12 @@ const Dashboard = () => {
         <Grid item xs={6} md={6} sm={6}>
           <Card
             style={{
-              background: `linear-gradient(135deg, #99de9d 0%,  #013220 100%)`,
+              background: "rgba(255, 255, 255, 0.2)",
+
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(5px)",
+              WebkitBackdropFilter: "blur(5px)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
             }}
           >
             <CardContent
@@ -102,7 +129,12 @@ const Dashboard = () => {
         <Grid item xs={12} md={12} sm={12}>
           <Card
             style={{
-              background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+              background: "rgba(255, 255, 255, 0.2)",
+
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(5px)",
+              WebkitBackdropFilter: "blur(5px)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
             }}
           >
             <CardContent

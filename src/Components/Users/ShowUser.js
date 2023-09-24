@@ -373,7 +373,6 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
                           component="div"
                           error={isError}
                           type="phoneNumber"
-                          color="secondary"
                           value={editedData.phoneNumber}
                           onChange={handleInputChange}
                           style={{ marginTop: "20px" }}
