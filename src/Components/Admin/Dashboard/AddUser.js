@@ -45,7 +45,7 @@ const AddUser = () => {
           style={{
             height: "50px",
             width: "50px",
-            color:'black',
+            color:'#01c2a4',
             cursor: "pointer",
           }}
         />
