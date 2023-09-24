@@ -73,17 +73,7 @@ function CreateUser() {
           >
             <Card style={{ boxShadow: "none" }}>
               <CardContent>
-                <Typography
-                  variant="h4"
-                  color="text.secondary"
-                  gutterBottom
-                  style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                ></Typography>
+             
                 <form onSubmit={handleSubmit}>
                   <TextField
                     variant="standard"

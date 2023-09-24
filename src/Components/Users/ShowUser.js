@@ -278,97 +278,137 @@ function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
 
   return (
     <>
-      <Dialog
-        open={open}
-        onClose={handleSubmit}
-        TransitionComponent={Transition}
-      >
-        <DialogTitle>
-          <div
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
             style={{
+              flex: 1,
+              justifyContent: "center",
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <Typography
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                fontFamily: "Poppins",
-              }}
-            >
-              Add User
-            </Typography>
+            <Card style={{ boxShadow: "none" }}>
+              <CardContent>
+                <Dialog
+                  open={open}
+                  onClose={handleSubmit}
+                  TransitionComponent={Transition}
+                >
+                  <DialogTitle>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Typography
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "500",
+                          fontFamily: "Poppins",
+                        }}
+                      >
+                        Update User
+                      </Typography>
 
-            <CloseRoundedIcon
-              onClick={handleSubmit}
-              style={{
-                color: "gray",
-                height: "30px",
-                width: "30px",
-                cursor: "pointer",
-              }}
-            />
-          </div>
-        </DialogTitle>
+                      <CloseRoundedIcon
+                        onClick={handleSubmit}
+                        style={{
+                          color: "gray",
+                          height: "30px",
+                          width: "30px",
+                          cursor: "pointer",
+                        }}
+                      />
+                    </div>
+                  </DialogTitle>
 
-        <DialogContent>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <TextField
-                required
-                variant="standard"
-                size="small"
-                label="Username"
-                name="userName"
-                type="text"
-                value={editedData.userName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <TextField
-                required
-                variant="standard"
-                size="small"
-                label="Father's Name"
-                name="fatherName"
-                type="text"
-                value={editedData.fatherName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <TextField
-                required
-                variant="standard"
-                helperText={isError ? "Number should be 10 digits" : ""}
-                size="small"
-                label="Phone Number"
-                name="phoneNumber"
-                component="div"
-                error={isError}
-                type="phoneNumber"
-                color="secondary"
-                value={editedData.phoneNumber}
-                onChange={handleInputChange}
-              />
-            </div>
+                  <DialogContent>
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <TextField
+                          required
+                          color="secondary"
+                          variant="standard"
+                          size="small"
+                          label="Username"
+                          name="userName"
+                          type="text"
+                          value={editedData.userName}
+                          onChange={handleInputChange}
+                          style={{ marginTop: "10px" }}
+                        />
+                      </div>
+                      <div>
+                        <TextField
+                          required
+                          color="secondary"
+                          variant="standard"
+                          size="small"
+                          label="Father's Name"
+                          name="fatherName"
+                          type="text"
+                          value={editedData.fatherName}
+                          onChange={handleInputChange}
+                          style={{ marginTop: "20px" }}
+                        />
+                      </div>
+                      <div>
+                        <TextField
+                          required
+                          color="secondary"
+                          variant="standard"
+                          helperText={
+                            isError ? "Number should be 10 digits" : ""
+                          }
+                          size="small"
+                          label="Phone Number"
+                          name="phoneNumber"
+                          component="div"
+                          error={isError}
+                          type="phoneNumber"
+                          color="secondary"
+                          value={editedData.phoneNumber}
+                          onChange={handleInputChange}
+                          style={{ marginTop: "20px" }}
+                        />
+                      </div>
 
-            <div>
-              <Button
-                color="secondary"
-                type="submit"
-                size="small"
-                variant="contained"
-              >
-                Save
-              </Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
+                      <div>
+                        <Button
+                          color="secondary"
+                          type="submit"
+                          size="small"
+                          variant="contained"
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            margin: "0 auto",
+                            background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                            textTransform: "none",
+                            fontSize: "16px",
+                            fontWeight: 500,
+                            marginTop: "20px",
+                          }}
+                        >
+                          Save
+                        </Button>
+                      </div>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
     </>
   );
 }
