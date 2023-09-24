@@ -10,7 +10,7 @@ import Dashboard from "./Components/Admin/Dashboard/Dashboard";
 
 // Users
 import CreateUser from "./Components/Users/CreateUser";
-import UserList from "./Components/Users/UserList";
+import ShowUser from "./Components/Users/ShowUser";
 import UserContext from "./context/books";
 
 // Components
@@ -52,7 +52,7 @@ const App = () => {
         <Route path="prayer" element={<PrayerTimes />} />
 
         <Route path="addUser" element={<AddUser />} />
-        <Route path="userList" element={<UserList />} />
+        <Route path="showUser" element={<ShowUser />} />
         <Route path="showUserPublic" element={<ShowUserPublic />} />
 
         <Route path="/user/:id" element={<UserDetails />} />

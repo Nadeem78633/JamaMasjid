@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { getAllTasks, updateTask, deleteTask } from "../../firebase";
 
+// Loader when we loading task from user
+import CircularProgress from "@mui/material/CircularProgress";
+
 // Material UI
 import {
   Grid,
@@ -62,7 +65,18 @@ function ShowUser() {
   };
 
   if (loading) {
-    return <p>Loading tasks...</p>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress color="success" />
+      </div>
+    );
   }
 
   const colors = ["#fdf2b3", "#d1eaed", "#ffdada", "#eafff4"];

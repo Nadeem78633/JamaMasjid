@@ -52,7 +52,6 @@ const Dashboard = () => {
         <Grid item xs={6} md={6} sm={6}>
           <Card
             style={{
-          
               background: `linear-gradient(135deg, #99de9d 0%,  #013220 100%)`,
             }}
           >
@@ -131,7 +130,7 @@ const Dashboard = () => {
                   Delete & Edit
                 </Typography>
                 <NavLink
-                  to="/userList"
+                  to="/showUser"
                   style={{ textDecoration: "none", color: "white" }}
                 >
                   <DeleteRoundedIcon
