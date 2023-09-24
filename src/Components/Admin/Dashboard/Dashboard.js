@@ -10,7 +10,7 @@ import glass1 from '../../images/glass1.jpg'
 import blackBack from '../../images/blackBack.png'
 import blue from '../../images/blue.jpg'
 
-import wallpaper4 from '../../images/wallpaper_4.jpg'
+import wallpaper4 from '../../images/wallpaper_5.jpg'
 
 
 const Dashboard = () => {
