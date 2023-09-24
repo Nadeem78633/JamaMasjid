@@ -14,6 +14,15 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Avatar from "@mui/material/Avatar";
+import { NavLink } from "react-router-dom";
 
 function ShowUser() {
   const [tasks, setTasks] = useState([]);
@@ -79,7 +88,7 @@ function ShowUser() {
     );
   }
 
-  const colors = ["#fdf2b3", "#d1eaed", "#ffdada", "#eafff4"];
+  const avatarColors = ["#fdf2b3", "#d1eaed", "#ffdada", "#eafff4"];
 
   console.log(registeredUsers);
   return (
@@ -88,16 +97,21 @@ function ShowUser() {
       {tasks.length === 0 ? (
         <p>No tasks available.</p>
       ) : (
-        <Grid container spacing={2} style={{ margin: "auto" }}>
-          {tasks.map((task, index) => (
-            <Grid item xs={12} md={3} key={task.id}>
-              <Card
-                style={{
-                  backgroundColor: colors[index % colors.length],
-                  width: "100%",
-                }}
-              >
-                <CardContent>
+        <Card style={{ marginTop: "100px" }}>
+          <CardContent>
+            <Typography
+              style={{
+                color: "grey",
+                fontFamily: "Poppins",
+                fontSize: "14px",
+                fontWeight: "400",
+              }}
+            >
+              Users
+            </Typography>
+            <Grid container spacing={2} style={{ margin: "auto" }}>
+              {tasks.map((task, index) => (
+                <Grid key={task.id} item xs={12} md={6} sm={12}>
                   {editingTask === task.id ? (
                     <TaskEditForm
                       task={task}
@@ -107,78 +121,106 @@ function ShowUser() {
                     />
                   ) : (
                     <>
-                      <Typography
-                        style={{
-                          fontFamily: "Poppins",
-                          fontStyle: "normal",
-                          fontWeight: "700",
-                          fontSize: "20px",
-                        }}
-                      >
-                        {task.userName}
-                      </Typography>
-                      <Typography
-                        style={{
-                          fontFamily: "Poppins",
-                          fontStyle: "normal",
-                          fontWeight: "500",
-                          fontSize: "14px",
-                          color: "gray",
-                        }}
-                      >
-                        {task.fatherName}
-                      </Typography>
-                      <Typography
-                        style={{
-                          fontFamily: "Poppins",
-                          fontStyle: "normal",
-                          fontWeight: "500",
-                          fontSize: "14px",
-                          color: "gray",
-                        }}
-                      >
-                        {task.phoneNumber}
-                      </Typography>
+                      <Box sx={{ width: "100%" }}>
+                        <nav aria-label="main mailbox folders">
+                          <List>
+                            <ListItem disablePadding>
+                              <ListItemIcon>
+                                <Avatar
+                                  disablePadding
+                                  style={{
+                                    color: "white",
+                                    fontFamily: "Poppins",
+                                    fontWeight: "600",
+                                    width: '50px',
+                                    height:'50px'
+                                  }}
+                                  sx={{
+                                    background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                                  }}
+                                >
+                                  {task.userName.slice(0, 1).toUpperCase()}
+                                </Avatar>
+                              </ListItemIcon>
+                              <ListItemText disablePadding>
+                                <Typography
+                                  style={{
+                                    fontSize: "18px",
+                                    fontFamily: "Poppins",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  {task.userName}
+                                </Typography>
+                                <Typography
+                                  style={{
+                                    fontSize: "14px",
+                                    fontFamily: "Poppins",
+                                    fontWeight: "500",
+                                    color: "#8789A3",
+                                  }}
+                                >
+                                  {task.fatherName}
+                                </Typography>
+                                <Typography
+                                  style={{
+                                    color: "#8789A3",
+                                    fontSize: "14px",
+                                    fontWeight: "500",
 
-                      <div style={{ marginTop: "10px" }}>
-                        <Button
-                          variant="contained"
-                          size="small"
-                          style={{
-                            textTransform: "none",
-                            fontFamily: "Poppins",
-                            fontStyle: "normal",
-                            fontWeight: "500",
-                            fontSize: "14px",
-                          }}
-                          onClick={() => handleEditClick(task.id)}
-                        >
-                          Edit
-                        </Button>
-                        <Button
-                          size="small"
-                          variant="contained"
-                          style={{
-                            textTransform: "none",
-                            backgroundColor: "red",
-                            marginLeft: "10px",
-                            fontFamily: "Poppins",
-                            fontStyle: "normal",
-                            fontWeight: "500",
-                            fontSize: "14px",
-                          }}
-                          onClick={() => handleDeleteTask(task.id)}
-                        >
-                          Delete
-                        </Button>
-                      </div>
+                                    fontFamily: "Poppins",
+                                  }}
+                                >
+                                  {task.phoneNumber}
+                                </Typography>
+                              </ListItemText>
+
+                              <div
+                                style={{ display: "flex", direction: "row" }}
+                              >
+                                <Button
+                                  variant="contained"
+                                  size="small"
+                                  style={{
+                                    textTransform: "none",
+                                    fontFamily: "Poppins",
+                                    fontStyle: "normal",
+                                    fontWeight: "500",
+                                    fontSize: "14px",
+                                  }}
+                                  onClick={() => handleEditClick(task.id)}
+                                >
+                                  Edit
+                                </Button>
+                                <Button
+                                  size="small"
+                                  variant="contained"
+                                  style={{
+                                    textTransform: "none",
+                                    backgroundColor: "red",
+                                    marginLeft: "10px",
+                                    fontFamily: "Poppins",
+                                    fontStyle: "normal",
+                                    fontWeight: "500",
+                                    fontSize: "14px",
+                                  }}
+                                  onClick={() => handleDeleteTask(task.id)}
+                                >
+                                  Delete
+                                </Button>
+                              </div>
+                            </ListItem>
+                          </List>
+                        </nav>
+                        <Divider style={{ width: "100%" }} />
+                      </Box>
                     </>
                   )}
-                </CardContent>
-              </Card>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </CardContent>
+        </Card>
       )}
     </div>
   );

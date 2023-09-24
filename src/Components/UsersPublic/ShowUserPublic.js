@@ -70,7 +70,7 @@ function ShowUserPublic() {
 
             <Grid container spacing={2}>
               {books.map((book) => (
-                <Grid key={book.id} item xs={12} md={6}>
+                <Grid key={book.id} item xs={12} md={6} sm={12}>
                   <Box sx={{ width: "100%" }}>
                     <nav aria-label="main mailbox folders">
                       <List>
