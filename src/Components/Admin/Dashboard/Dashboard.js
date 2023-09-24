@@ -52,6 +52,7 @@ const Dashboard = () => {
         <Grid item xs={6} md={6} sm={6}>
           <Card
             style={{
+          
               background: `linear-gradient(135deg, #99de9d 0%,  #013220 100%)`,
             }}
           >
@@ -102,7 +103,7 @@ const Dashboard = () => {
         <Grid item xs={12} md={12} sm={12}>
           <Card
             style={{
-              background: `linear-gradient(135deg, #ff7979 0%, #8B0000 100%)`,
+              background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
             }}
           >
             <CardContent
