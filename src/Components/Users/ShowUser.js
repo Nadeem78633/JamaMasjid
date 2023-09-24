@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { getAllTasks, updateTask, deleteTask } from "../../firebase";
 
-// Loader when we loading task from user
 import CircularProgress from "@mui/material/CircularProgress";
 
-// Material UI
 import {
   Grid,
   Card,
@@ -20,21 +18,29 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Avatar from "@mui/material/Avatar";
-import { NavLink } from "react-router-dom";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import Slide from "@mui/material/Slide";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function ShowUser() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingTask, setEditingTask] = useState(null);
-  const [registeredUsers, setRegisteredUsers] = useState([]);
+  const [open, setOpen] = useState(false); // State for controlling the dialog
 
   useEffect(() => {
-    // Fetch all tasks and update the state
     getAllTasks()
       .then((taskList) => {
         setTasks(taskList);
@@ -48,15 +54,14 @@ function ShowUser() {
 
   const handleEditClick = (taskId) => {
     setEditingTask(taskId);
+    setOpen(true); // Open the dialog when "Edit" is clicked
   };
 
   const handleUpdateTask = async (taskId, updatedData) => {
     try {
       await updateTask(taskId, updatedData);
-      // After updating, set editingTask back to null
       setEditingTask(null);
 
-      // Fetch the updated task list and update the state
       const updatedTaskList = await getAllTasks();
       setTasks(updatedTaskList);
     } catch (error) {
@@ -68,7 +73,6 @@ function ShowUser() {
     try {
       await deleteTask(taskId);
 
-      // Fetch the updated task list and update the state
       const updatedTaskList = await getAllTasks();
       setTasks(updatedTaskList);
     } catch (error) {
@@ -91,14 +95,6 @@ function ShowUser() {
     );
   }
 
-  // const avatarColors = [
-  //   "linear-gradient(135deg, #6016e5 0%, #16e560 100%)",
-
-  //   "#fe332d",
-  //   "#535353",
-  // ];
-
-  console.log(registeredUsers);
   return (
     <div>
       <h2>Task List</h2>
@@ -126,6 +122,8 @@ function ShowUser() {
                       onSave={(updatedData) =>
                         handleUpdateTask(task.id, updatedData)
                       }
+                      open={open}
+                      setOpen={setOpen}
                     />
                   ) : (
                     <>
@@ -240,74 +238,116 @@ function ShowUser() {
   );
 }
 
-// Rest of your component remains unchanged
-
-// Component for editing a task
-function TaskEditForm({ task, onSave }) {
-  // Initialize updatedData from the task prop
+function TaskEditForm({ task, onSave, open, setOpen, editingTask }) {
+  // Initialize editedData state with the task prop
+  const [editedData, setEditedData] = useState(task);
   const [updatedData, setUpdatedData] = useState(task);
-
-  // Update updatedData when the task prop changes
-  useEffect(() => {
-    setUpdatedData(task);
-  }, [task]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // Update the updatedData state
-    setUpdatedData({ ...updatedData, [name]: value });
+    // Update the editedData state when input changes
+    setEditedData({ ...editedData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(updatedData);
+    onSave(editedData); // Pass editedData to onSave
+    setUpdatedData(editedData); // Update updatedData after saving
+    setOpen(false);
+  };
+
+  const handleClose = () => {
+    
+    setOpen(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <TextField
-          size="small"
-          label="Username"
-          name="userName"
-          type="text"
-          value={updatedData.userName}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <TextField
-          size="small"
-          label="Father's Name"
-          name="fatherName"
-          type="text"
-          value={updatedData.fatherName}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <TextField
-          size="small"
-          label="Phone Number"
-          name="phoneNumber"
-          type="text"
-          value={updatedData.phoneNumber}
-          onChange={handleInputChange}
-        />
-      </div>
+    <>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        onBackdropClick={handleSubmit} 
+        TransitionComponent={Transition}
+      >
+        <DialogTitle>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              style={{
+                fontSize: "18px",
+                fontWeight: "500",
+                fontFamily: "Poppins",
+              }}
+            >
+              Add User
+            </Typography>
 
-      <div>
-        <Button
-          color="secondary"
-          type="submit"
-          size="small"
-          variant="contained"
-        >
-          Save
-        </Button>
-      </div>
-    </form>
+            <CloseRoundedIcon
+              onClick={handleSubmit}
+              style={{
+                color: "gray",
+                height: "30px",
+                width: "30px",
+                cursor: "pointer",
+              }}
+            />
+          </div>
+        </DialogTitle>
+
+        <DialogContent>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <TextField
+                size="small"
+                label="Username"
+                name="userName"
+                type="text"
+                value={editedData.userName}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <TextField
+                size="small"
+                label="Father's Name"
+                name="fatherName"
+                type="text"
+                value={editedData.fatherName}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <TextField
+                size="small"
+                label="Phone Number"
+                name="phoneNumber"
+                type="text"
+                value={editedData.phoneNumber}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div>
+              <Button
+                color="secondary"
+                type="submit"
+                size="small"
+                variant="contained"
+              >
+                Save
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
+
 
 export default ShowUser;
