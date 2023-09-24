@@ -117,9 +117,9 @@ function ShowUser() {
             >
               Users
             </Typography>
-            <Grid container spacing={2} >
+            <Grid container spacing={2}>
               {tasks.map((task, index) => (
-                <Grid key={task.id} item xs={12} md={6} sm={12} >
+                <Grid key={task.id} item xs={12} md={6} sm={12}>
                   {editingTask === task.id ? (
                     <TaskEditForm
                       task={task}
@@ -195,31 +195,32 @@ function ShowUser() {
                                     fontFamily: "Poppins",
                                     fontStyle: "normal",
                                     fontWeight: "500",
-                                    fontSize: "14px",
-                                    background:
-                                      "linear-gradient(135deg, #05c466 0%, #006400 100%)",
+
+                                    background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                                   }}
                                   onClick={() => handleEditClick(task.id)}
                                 >
-                                  <EditOutlinedIcon />
+                                  <EditOutlinedIcon
+                                    style={{ width: "30px", height: "30px" }}
+                                  />
                                 </Button>
                                 <Button
                                   size="small"
                                   variant="contained"
                                   style={{
                                     textTransform: "none",
-                                    background:
-                                      "linear-gradient(135deg, #f93227 0%, #8B0000 100%)",
+                                    background: `linear-gradient(135deg, gray 0%, black 100%)`,
 
                                     marginLeft: "10px",
                                     fontFamily: "Poppins",
                                     fontStyle: "normal",
                                     fontWeight: "500",
-                                    fontSize: "14px",
                                   }}
                                   onClick={() => handleDeleteTask(task.id)}
                                 >
-                                  <DeleteIcon />
+                                  <DeleteIcon
+                                    style={{ width: "30px", height: "30px" }}
+                                  />
                                 </Button>
                               </div>
                             </ListItem>
