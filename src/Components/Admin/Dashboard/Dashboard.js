@@ -70,7 +70,7 @@ const Dashboard = () => {
                 }}
               >
                 <NavLink
-                  to="/showUserPublic"
+                  to="/showUserAdmin"
                   style={{ textDecoration: "none", color: "white" }}
                 >
                   <Avatar

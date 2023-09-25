@@ -20,6 +20,14 @@ import Donate from "./Components/Donate/Donate";
 // UsersForPublic
 import ShowUserPublic from "./Components/UsersPublic/ShowUserPublic";
 
+// UserForAdmin
+import ShowUserAdmin from "./Components/Admin/Rupess/ShowUserAdmin";
+
+
+
+// Import Addamount
+import AddAmount from "./Components/Admin/Rupess/AddAmount";
+
 // React router
 import {
   createBrowserRouter,
@@ -61,6 +69,8 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/showUserAdmin" element={<ShowUserAdmin />} />
+        <Route path="/addAmount/:id" element={<AddAmount />} />
       </Route>
     )
   );
