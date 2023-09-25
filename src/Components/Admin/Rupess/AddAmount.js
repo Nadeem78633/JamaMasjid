@@ -275,7 +275,7 @@ const AddAmount = () => {
               <FormControl
                 style={{
                   position: "absolute",
-                  top: "-40px",
+                  top: "-53px",
                   right: "10px",
                   zIndex: 1, // Ensure the filter is above content
                 }}
@@ -307,7 +307,7 @@ const AddAmount = () => {
                     textTransform: "none",
                     fontFamily: "Poppins",
                     fontStyle: "normal",
-                    fontWeight: "400",
+                    fontWeight: "600",
                     background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                   }}
                   onClick={handleClickOpen}
