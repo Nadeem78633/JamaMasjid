@@ -264,13 +264,13 @@ const AddAmount = () => {
                   {tasks?.fatherName}
                 </Typography>
               </div>
-              <div style={{ marginLeft:'auto',marginRight:'auto',marginTop:'10px' }}>
+              <div style={{ marginLeft:'30px',marginTop:'10px' }}>
                 <Button
                   style={{
                     textTransform: "none",
                     fontFamily: "Poppins",
                     fontStyle: "normal",
-                    fontWeight: "500",
+                    fontWeight: "400",
                     background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                   }}
                   onClick={handleClickOpen}
