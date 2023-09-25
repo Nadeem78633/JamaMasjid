@@ -111,7 +111,7 @@ const Dashboard = () => {
 
         {/* Delete edit users */}
         <Grid item xs={4} md={4} sm={4}>
-          <Card>
+          <Card style={{ background: "#f3f2f2" }}>
             <CardContent
               style={{
                 display: "flex",
