@@ -2,7 +2,8 @@ import React from "react";
 import { Grid, Card, CardContent, Typography, Avatar } from "@mui/material";
 
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
-import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 
 // Components
 import AmountSpendUsers from "./AmountSpendUsers";
@@ -83,7 +84,7 @@ const Dashboard = () => {
                       background: "white",
                     }}
                   >
-                    <PeopleAltRoundedIcon
+                    <GroupOutlinedIcon
                       style={{
                         height: "50px",
                         width: "50px",
@@ -139,7 +140,7 @@ const Dashboard = () => {
                       background: "white",
                     }}
                   >
-                    <DeleteRoundedIcon
+                    <DeleteOutlineOutlinedIcon
                       style={{
                         height: "50px",
                         width: "50px",
