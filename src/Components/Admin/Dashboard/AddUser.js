@@ -37,7 +37,7 @@ const AddUser = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          background: "#eafaf7",
+          background: "white",
         }}
       >
         <AddRoundedIcon
@@ -45,7 +45,7 @@ const AddUser = () => {
           style={{
             height: "50px",
             width: "50px",
-            color:'#01c2a4',
+            color: "#00c3a5",
             cursor: "pointer",
           }}
         />
