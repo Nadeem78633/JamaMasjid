@@ -11,6 +11,8 @@ import {
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import WalletIcon from "@mui/icons-material/Wallet";
 import Divider from "@mui/material/Divider";
 
 import { NavLink } from "react-router-dom";
@@ -71,25 +73,27 @@ const Dashboard = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      paddingLeft: "10px",
+                      paddingLeft: "5px",
                       fontSize: "14px",
                       fontFamily: "Poppins",
                       fontWeight: "500",
                       color: "#8789A3",
                     }}
                   >
-                    Total Users
+                    Users
                   </Typography>
                   <Typography
                     style={{
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      paddingLeft: "15px",
+
                       fontSize: "14px",
                       fontFamily: "Poppins",
                       fontWeight: "500",
-                      color: "#8789A3",
+                      color: " #672CBC",
+                      paddingLeft: "5px",
+                      marginTop: "10px",
                     }}
                   >
                     100+
@@ -121,7 +125,7 @@ const Dashboard = () => {
                     background: "rgba(187, 196, 206, 0.35)",
                   }}
                 >
-                  <PeopleOutlineIcon
+                  <WalletIcon
                     style={{ width: "30px", height: "30px", color: "black" }}
                   />
                 </Avatar>
@@ -131,25 +135,27 @@ const Dashboard = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      paddingLeft: "10px",
+                      paddingLeft: "5px",
                       fontSize: "14px",
                       fontFamily: "Poppins",
                       fontWeight: "500",
                       color: "#8789A3",
                     }}
                   >
-                    Total Users
+                    Amount
                   </Typography>
                   <Typography
                     style={{
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      paddingLeft: "15px",
+
                       fontSize: "14px",
                       fontFamily: "Poppins",
                       fontWeight: "500",
-                      color: "#8789A3",
+                      color: "green",
+                      paddingLeft: "5px",
+                      marginTop: "10px",
                     }}
                   >
                     100+
@@ -180,7 +186,7 @@ const Dashboard = () => {
                     background: "rgba(187, 196, 206, 0.35)",
                   }}
                 >
-                  <PeopleOutlineIcon
+                  <CurrencyRupeeIcon
                     style={{ width: "30px", height: "30px", color: "black" }}
                   />
                 </Avatar>
@@ -190,28 +196,29 @@ const Dashboard = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      paddingLeft: "10px",
+                      paddingLeft: "5px",
                       fontSize: "14px",
                       fontFamily: "Poppins",
                       fontWeight: "500",
                       color: "#8789A3",
                     }}
                   >
-                    Total Users
+                    Spend
                   </Typography>
                   <Typography
                     style={{
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      paddingLeft: "15px",
+                      paddingLeft: "5px",
                       fontSize: "14px",
                       fontFamily: "Poppins",
                       fontWeight: "500",
-                      color: "#8789A3",
+                      color: "red",
+                      marginTop: "10px",
                     }}
                   >
-                    100+
+                    100-
                   </Typography>
                 </div>
               </CardContent>
