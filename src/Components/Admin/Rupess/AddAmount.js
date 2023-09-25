@@ -264,21 +264,6 @@ const AddAmount = () => {
                   {tasks?.fatherName}
                 </Typography>
               </div>
-              <div style={{ marginLeft:'30px',marginTop:'10px' }}>
-                <Button
-                  style={{
-                    textTransform: "none",
-                    fontFamily: "Poppins",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
-                  }}
-                  onClick={handleClickOpen}
-                  variant="contained"
-                >
-                  Add Amount
-                </Button>
-              </div>
             </div>
 
             {/* Filter container */}
@@ -316,6 +301,21 @@ const AddAmount = () => {
                   ))}
                 </Select>
               </FormControl>
+              <div style={{marginTop:'10px'}}>
+                <Button
+                  style={{
+                    textTransform: "none",
+                    fontFamily: "Poppins",
+                    fontStyle: "normal",
+                    fontWeight: "400",
+                    background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                  }}
+                  onClick={handleClickOpen}
+                  variant="contained"
+                >
+                  Add Amount
+                </Button>
+              </div>
             </div>
 
             {tasks?.years?.map(
