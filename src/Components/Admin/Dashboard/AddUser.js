@@ -32,20 +32,20 @@ const AddUser = () => {
     <div>
       <Avatar
         style={{
-          width: "60px",
-          height: "60px",
+          width: "45px",
+          height: "45px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          background: "white",
+          background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
         }}
       >
         <AddRoundedIcon
           onClick={handleClickOpen}
           style={{
-            height: "50px",
-            width: "50px",
-            color: "#00c3a5",
+            height: "45px",
+            width: "45px",
+            color: "white",
             cursor: "pointer",
           }}
         />

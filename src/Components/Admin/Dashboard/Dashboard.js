@@ -2,8 +2,7 @@ import React from "react";
 import { Grid, Card, CardContent, Typography, Avatar } from "@mui/material";
 
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 // Components
 import AmountSpendUsers from "./AmountSpendUsers";
@@ -76,19 +75,19 @@ const Dashboard = () => {
                 >
                   <Avatar
                     style={{
-                      width: "60px",
-                      height: "60px",
+                      width: "45px",
+                      height: "45px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      background: "white",
+                      background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                     }}
                   >
-                    <GroupOutlinedIcon
+                    <PeopleAltRoundedIcon
                       style={{
-                        height: "50px",
-                        width: "50px",
-                        color: "#f29900",
+                        height: "30px",
+                        width: "30px",
+                        color: "white",
                         cursor: "pointer",
                       }}
                     />
@@ -103,7 +102,7 @@ const Dashboard = () => {
                     marginTop: "8px",
                   }}
                 >
-                  Users List
+                  Users
                 </Typography>
               </div>
             </CardContent>
@@ -112,7 +111,7 @@ const Dashboard = () => {
 
         {/* Delete edit users */}
         <Grid item xs={4} md={4} sm={4}>
-          <Card style={{ background: "#f3f2f2" }}>
+          <Card>
             <CardContent
               style={{
                 display: "flex",
@@ -132,19 +131,19 @@ const Dashboard = () => {
                 >
                   <Avatar
                     style={{
-                      width: "60px",
-                      height: "60px",
+                      width: "45px",
+                      height: "45px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      background: "white",
+                      background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
                     }}
                   >
-                    <DeleteOutlineOutlinedIcon
+                    <DeleteRoundedIcon
                       style={{
-                        height: "50px",
-                        width: "50px",
-                        color: "#e60934",
+                        height: "30px",
+                        width: "30px",
+                        color: "white",
                         cursor: "pointer",
                       }}
                     />
