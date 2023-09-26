@@ -186,6 +186,7 @@ const AddAmount = () => {
       .then(() => {
         console.log("Task updated successfully");
         setNewAmount("");
+        setDate(null);
         setOpen(false);
       })
       .catch((error) => {
@@ -240,7 +241,7 @@ const AddAmount = () => {
             }}
           >
             <TextField
-              style={{marginBottom:'10px'}}
+              style={{ marginBottom: "10px" }}
               variant="standard"
               size="small"
               type="number"
@@ -253,7 +254,7 @@ const AddAmount = () => {
                 style={{ width: "100px" }}
                 value={date}
                 onChange={handleDate}
-                slotProps={{ textField: { size: "small"} }}
+                slotProps={{ textField: { size: "small" } }}
               />
             </LocalizationProvider>
             <Button

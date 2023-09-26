@@ -70,6 +70,7 @@ function CreateUser() {
     setUserName("");
     setPhoneNumber("");
     setFatherName("");
+    setDate(null);
     // Calling Toastify function inside the submit
     displayLoginNotification();
     console.log(userName, phoneNumber, fatherName, year, month, day);
@@ -153,12 +154,12 @@ function CreateUser() {
                   <br />
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
-                      style={{width:'100px'}}
                       value={date}
                       onChange={handleDate}
                       slotProps={{
                         textField: {
                           required: true,
+                          size: "small",
                         },
                       }}
                     />
@@ -177,6 +178,7 @@ function CreateUser() {
                       textTransform: "none",
                       fontSize: "16px",
                       fontWeight: 500,
+                      marginTop: "10px",
                     }}
                   >
                     Add

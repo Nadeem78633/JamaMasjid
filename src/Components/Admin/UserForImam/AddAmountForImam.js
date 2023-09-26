@@ -186,7 +186,8 @@ const updateTaskWithAmount = () => {
     .then(() => {
       console.log("Task updated successfully");
       setNewAmount("");
-      setOpen(false);
+        setOpen(false);
+          setDate(null);
     })
     .catch((error) => {
       console.error("Error updating task:", error);
@@ -240,7 +241,8 @@ const updateTaskWithAmount = () => {
               alignItems: "center",
             }}
           >
-            <TextField
+                      <TextField
+                          style={{marginBottom:'10px'}}
               variant="standard"
               size="small"
               type="number"
@@ -250,14 +252,9 @@ const updateTaskWithAmount = () => {
             />
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
-              
                 value={date}
                 onChange={handleDate}
-                slotProps={{
-                  textField: {
-                    required: true,
-                  },
-                }}
+                slotProps={{ textField: { size: "small" } }}
               />
             </LocalizationProvider>
             <Button
