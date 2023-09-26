@@ -15,11 +15,31 @@ import CardContent from "@mui/material/CardContent";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Date Picker
+
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+
 function CreateUser() {
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isError, setIsError] = useState(false);
   const [fatherName, setFatherName] = useState("");
+
+  // Date Picker
+  const [date, setDate] = useState(null);
+  const handleDate = (newDate) => {
+    setDate(newDate);
+  };
+  const selectedDate = dayjs(date);
+
+  const year = selectedDate.format("YYYY"); // Get the year
+  const month = selectedDate.format("MM"); // Get the month (01 for January, 02 for February, etc.)
+  const day = selectedDate.format("DD"); // Get the day of the month
+
+  console.log("Years", year, month, day);
 
   const handleChange = (event) => {
     setUserName(event.target.value);
@@ -46,13 +66,13 @@ function CreateUser() {
       setIsError(true);
       return; // Return early without creating the book
     }
-    createTask(userName, phoneNumber, fatherName, new Date().getFullYear(), 0); // Replace 0 with the actual amount value
+    createTask(userName, phoneNumber, fatherName, year, month, day, 0); // Replace 0 with the actual amount value
     setUserName("");
     setPhoneNumber("");
     setFatherName("");
     // Calling Toastify function inside the submit
     displayLoginNotification();
-    console.log(userName, phoneNumber, fatherName);
+    console.log(userName, phoneNumber, fatherName, year, month, day);
   };
 
   return (
@@ -73,7 +93,6 @@ function CreateUser() {
           >
             <Card style={{ boxShadow: "none" }}>
               <CardContent>
-             
                 <form onSubmit={handleSubmit}>
                   <TextField
                     variant="standard"
@@ -122,7 +141,7 @@ function CreateUser() {
                     onChange={handleNumber}
                     component="div"
                     error={isError}
-                    type="phoneNumber"
+                    type="number"
                     color="secondary"
                     style={{
                       flex: 1,
@@ -131,6 +150,20 @@ function CreateUser() {
                       alignItems: "center",
                     }}
                   />
+                  <br />
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      style={{width:'100px'}}
+                      value={date}
+                      onChange={handleDate}
+                      slotProps={{
+                        textField: {
+                          required: true,
+                        },
+                      }}
+                    />
+                  </LocalizationProvider>
+
                   <br />
                   <Button
                     type="submit"

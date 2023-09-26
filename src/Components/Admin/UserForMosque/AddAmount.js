@@ -30,6 +30,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 
+// Date Picker
+
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+
 // Slide
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -37,6 +44,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const AddAmount = () => {
   const params = useParams();
+
+  // Date Picker
+  const [date, setDate] = useState(null);
+  const handleDate = (newDate) => {
+    setDate(newDate);
+  };
+  const selectedDate = dayjs(date);
+
+  const year = selectedDate.format("YYYY"); // Get the year
+  const month = selectedDate.format("MM"); // Get the month (01 for January, 02 for February, etc.)
+  const day = selectedDate.format("DD"); // Get the day of the month
+
+  console.log("Years", year, month, day);
 
   const [filterYear, setFilterYear] = useState(""); // State for selected year filter
 
@@ -108,11 +128,16 @@ const AddAmount = () => {
   console.log("user", tasks);
 
   //Logic to add amount
-
   const updateTaskWithAmount = () => {
+    // Check if the date is empty
+    if (!date) {
+      alert("Please select a date before adding an amount.");
+      return;
+    }
+
     // Get the current year and month
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
+    const currentYear = year;
+    const currentMonth = month;
 
     // Create a copy of the task data
     const updatedTaskData = { ...tasks };
@@ -137,8 +162,8 @@ const AddAmount = () => {
       } else {
         // Month doesn't exist, create a new month object
         yearData.months.push({
-          date: new Date().getDate(),
-          month: currentMonth,
+          day: day,
+          month: month,
           amount: newAmount,
         });
       }
@@ -148,7 +173,7 @@ const AddAmount = () => {
         year: currentYear,
         months: [
           {
-            date: new Date().getDate(),
+            day: day,
             month: currentMonth,
             amount: newAmount,
           },
@@ -215,6 +240,7 @@ const AddAmount = () => {
             }}
           >
             <TextField
+              style={{marginBottom:'10px'}}
               variant="standard"
               size="small"
               type="number"
@@ -222,6 +248,14 @@ const AddAmount = () => {
               onChange={(e) => setNewAmount(Number(e.target.value))}
               color="secondary"
             />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                style={{ width: "100px" }}
+                value={date}
+                onChange={handleDate}
+                slotProps={{ textField: { size: "small"} }}
+              />
+            </LocalizationProvider>
             <Button
               style={{
                 textTransform: "none",
@@ -301,7 +335,7 @@ const AddAmount = () => {
                   ))}
                 </Select>
               </FormControl>
-              <div style={{marginTop:'10px'}}>
+              <div style={{ marginTop: "10px" }}>
                 <Button
                   style={{
                     textTransform: "none",
@@ -373,7 +407,7 @@ const AddAmount = () => {
                               }}
                             >
                               <div style={{ paddingLeft: "10px" }}>
-                                {month?.date}-{getMonthName(month.month)}
+                                {month?.day}-{getMonthName(month.month)}
                               </div>
                               <div style={{ paddingRight: "10px" }}>
                                 {month?.amount} &#8377;

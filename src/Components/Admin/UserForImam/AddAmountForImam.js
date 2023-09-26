@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+
 //Firebase
 
 import { getTaskById, updateTask } from "../../../firebase";
@@ -38,6 +43,18 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const AddAmountForImam = () => {
   const params = useParams();
 
+  const [date, setDate] = useState(null);
+
+  const selectedDate = dayjs(date);
+
+  const year = selectedDate.format("YYYY"); // Get the year
+  const month = selectedDate.format("MM"); // Get the month (01 for January, 02 for February, etc.)
+  const day = selectedDate.format("DD"); // Get the day of the month
+
+  console.log("Year: ", year);
+  console.log("Month: ", year);
+  console.log("Day: ", day);
+
   const [filterYear, setFilterYear] = useState(""); // State for selected year filter
 
   // Logic to add amount
@@ -56,7 +73,11 @@ const AddAmountForImam = () => {
 
   const handleClose = () => {
     setOpen(false);
-  };
+    };
+      const handleDate = (newDate) => {
+          setDate(newDate);
+        
+      };
 
   // Data fetching using firebase
 
@@ -94,9 +115,7 @@ const AddAmountForImam = () => {
   // Extract unique.imam from tasks data
   // Extract unique.imam from tasks data and filter out empty strings
   const availableYears = Array.from(
-    new Set(
-      tasks?.imam?.map((year) => year.year).filter((year) => year !== "")
-    )
+    new Set(tasks?.imam?.map((year) => year.year).filter((year) => year !== ""))
   );
 
   console.log(availableYears);
@@ -109,64 +128,71 @@ const AddAmountForImam = () => {
 
   //Logic to add amount
 
-  const updateTaskWithAmount = () => {
-    // Get the current year and month
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
+const updateTaskWithAmount = () => {
+  // Check if the date is empty
+  if (!date) {
+    alert("Please select a date before adding an amount.");
+    return;
+  }
 
-    // Create a copy of the task data
-    const updatedTaskData = { ...tasks };
+  // Get the current year and month
+  const currentYear = year;
+  const currentMonth = month;
 
-    // Find the index of the year for the selected year in the database
-    const yearIndex = updatedTaskData.imam.findIndex(
-      (year) => year.year === currentYear
+  // Create a copy of the task data
+  const updatedTaskData = { ...tasks };
+
+  // Find the index of the year for the selected year in the database
+  const yearIndex = updatedTaskData.imam.findIndex(
+    (year) => year.year === currentYear
+  );
+
+  if (yearIndex !== -1) {
+    // Year exists in the database, update the amount for the current month
+    const yearData = updatedTaskData.imam[yearIndex];
+
+    // Find the index of the current month in the year's data
+    const monthIndex = yearData.months.findIndex(
+      (month) => month.month === currentMonth
     );
 
-    if (yearIndex !== -1) {
-      // Year exists in the database, update the amount for the current month
-      const yearData = updatedTaskData.imam[yearIndex];
-
-      // Find the index of the current month in the year's data
-      const monthIndex = yearData.months.findIndex(
-        (month) => month.month === currentMonth
-      );
-
-      if (monthIndex !== -1) {
-        // Month exists, update the amount
-        yearData.months[monthIndex].amount += newAmount;
-      } else {
-        // Month doesn't exist, create a new month object
-        yearData.months.push({
-          date: new Date().getDate(),
-          month: currentMonth,
-          amount: newAmount,
-        });
-      }
+    if (monthIndex !== -1) {
+      // Month exists, update the amount
+      yearData.months[monthIndex].amount += newAmount;
     } else {
-      // Year doesn't exist, create a new year object
-      updatedTaskData.imam.push({
-        year: currentYear,
-        months: [
-          {
-            date: new Date().getDate(),
-            month: currentMonth,
-            amount: newAmount,
-          },
-        ],
+      // Month doesn't exist, create a new month object
+      yearData.months.push({
+        day: day,
+        month: month,
+        amount: newAmount,
       });
     }
+  } else {
+    // Year doesn't exist, create a new year object
+    updatedTaskData.imam.push({
+      year: currentYear,
+      months: [
+        {
+          day: day,
+          month: currentMonth,
+          amount: newAmount,
+        },
+      ],
+    });
+  }
 
-    // Update the task data in Firebase Firestore
-    updateTask(params.id, updatedTaskData)
-      .then(() => {
-        console.log("Task updated successfully");
-        setNewAmount("");
-        setOpen(false);
-      })
-      .catch((error) => {
-        console.error("Error updating task:", error);
-      });
-  };
+  // Update the task data in Firebase Firestore
+  updateTask(params.id, updatedTaskData)
+    .then(() => {
+      console.log("Task updated successfully");
+      setNewAmount("");
+      setOpen(false);
+    })
+    .catch((error) => {
+      console.error("Error updating task:", error);
+    });
+};
+
 
   return (
     <>
@@ -222,6 +248,18 @@ const AddAmountForImam = () => {
               onChange={(e) => setNewAmount(Number(e.target.value))}
               color="secondary"
             />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+              
+                value={date}
+                onChange={handleDate}
+                slotProps={{
+                  textField: {
+                    required: true,
+                  },
+                }}
+              />
+            </LocalizationProvider>
             <Button
               style={{
                 textTransform: "none",
@@ -301,6 +339,7 @@ const AddAmountForImam = () => {
                   ))}
                 </Select>
               </FormControl>
+
               <div style={{ marginTop: "10px" }}>
                 <Button
                   style={{
@@ -373,7 +412,7 @@ const AddAmountForImam = () => {
                               }}
                             >
                               <div style={{ paddingLeft: "10px" }}>
-                                {month?.date}-{getMonthName(month.month)}
+                                {month?.day}-{getMonthName(month.month)}
                               </div>
                               <div style={{ paddingRight: "10px" }}>
                                 {month?.amount} &#8377;

@@ -103,7 +103,7 @@ const logout = () => {
 };
 
 // Create Task
-const createTask = async (userName, phoneNumber, fatherName, year, amount) => {
+const createTask = async (userName, phoneNumber, fatherName, year,month,day, amount) => {
   try {
     // Define the book data
     const bookData = {
@@ -115,8 +115,8 @@ const createTask = async (userName, phoneNumber, fatherName, year, amount) => {
           year,
           months: [
             {
-              date: new Date().getDate(),
-              month: new Date().getMonth() + 1,
+              day: day,
+              month: month,
               amount,
             },
           ],
@@ -127,8 +127,8 @@ const createTask = async (userName, phoneNumber, fatherName, year, amount) => {
           year,
           months: [
             {
-              date: new Date().getDate(),
-              month: new Date().getMonth() + 1,
+              day: day,
+              month: month,
               amount,
             },
           ],
