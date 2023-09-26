@@ -23,7 +23,7 @@ const Dashboard = () => {
       >
         <AmountSpendUsers />
 
-        <Grid item xs={4} md={4} sm={4}>
+        <Grid item xs={6} md={6} sm={6}>
           <Card style={{ background: "#f3f2f2" }}>
             <CardContent
               style={{
@@ -54,7 +54,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={4} md={4} sm={4}>
+        <Grid item xs={6} md={6} sm={6}>
           <Card style={{ background: "#f3f2f2" }}>
             <CardContent
               style={{
@@ -108,7 +108,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={4} md={4} sm={4}>
+        <Grid item xs={6} md={6} sm={6}>
           <Card style={{ background: "#f3f2f2" }}>
             <CardContent
               style={{
@@ -164,7 +164,7 @@ const Dashboard = () => {
         </Grid>
 
         {/* Delete edit users */}
-        <Grid item xs={4} md={4} sm={4}>
+        <Grid item xs={6} md={6} sm={6}>
           <Card style={{ background: "#f3f2f2" }}>
             <CardContent
               style={{
