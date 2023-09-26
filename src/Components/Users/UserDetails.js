@@ -61,7 +61,7 @@ const UserDetails = () => {
   };
   // Extract unique years from tasks data
   const availableYears = Array.from(
-    new Set(tasks?.years?.map((year) => year.year))
+    new Set(tasks?.mosque?.map((year) => year.year))
   );
 
   // Handle year filter change
@@ -132,7 +132,7 @@ const UserDetails = () => {
             </FormControl>
           </div>
 
-          {tasks?.years?.map(
+          {tasks?.mosque?.map(
             (yearData) =>
               // Apply year filter if selected, or display all years
               (!filterYear || filterYear === yearData.year) && (

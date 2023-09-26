@@ -35,7 +35,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const AddAmount = () => {
+const AddAmountForImam = () => {
   const params = useParams();
 
   const [filterYear, setFilterYear] = useState(""); // State for selected year filter
@@ -91,11 +91,11 @@ const AddAmount = () => {
     ];
     return months[monthNumber - 1] || "";
   };
-  // Extract unique years from tasks data
-  // Extract unique years from tasks data and filter out empty strings
+  // Extract unique.imam from tasks data
+  // Extract unique.imam from tasks data and filter out empty strings
   const availableYears = Array.from(
     new Set(
-      tasks?.years?.map((year) => year.year).filter((year) => year !== "")
+      tasks?.imam?.map((year) => year.year).filter((year) => year !== "")
     )
   );
 
@@ -118,13 +118,13 @@ const AddAmount = () => {
     const updatedTaskData = { ...tasks };
 
     // Find the index of the year for the selected year in the database
-    const yearIndex = updatedTaskData.years.findIndex(
+    const yearIndex = updatedTaskData.imam.findIndex(
       (year) => year.year === currentYear
     );
 
     if (yearIndex !== -1) {
       // Year exists in the database, update the amount for the current month
-      const yearData = updatedTaskData.years[yearIndex];
+      const yearData = updatedTaskData.imam[yearIndex];
 
       // Find the index of the current month in the year's data
       const monthIndex = yearData.months.findIndex(
@@ -144,7 +144,7 @@ const AddAmount = () => {
       }
     } else {
       // Year doesn't exist, create a new year object
-      updatedTaskData.years.push({
+      updatedTaskData.imam.push({
         year: currentYear,
         months: [
           {
@@ -190,7 +190,7 @@ const AddAmount = () => {
                 fontFamily: "Poppins",
               }}
             >
-              Add User
+              Amount For Imam
             </Typography>
 
             <CloseRoundedIcon
@@ -229,7 +229,7 @@ const AddAmount = () => {
                 fontStyle: "normal",
                 fontWeight: "500",
                 color: "white",
-                background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                background: `linear-gradient(135deg, gray 0%, black 100%)`,
                 marginTop: "10px",
               }}
               onClick={updateTaskWithAmount}
@@ -301,14 +301,14 @@ const AddAmount = () => {
                   ))}
                 </Select>
               </FormControl>
-              <div style={{marginTop:'10px'}}>
+              <div style={{ marginTop: "10px" }}>
                 <Button
                   style={{
                     textTransform: "none",
                     fontFamily: "Poppins",
                     fontStyle: "normal",
                     fontWeight: "600",
-                    background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                    background: `linear-gradient(135deg, gray 0%, black 100%)`,
                   }}
                   onClick={handleClickOpen}
                   variant="contained"
@@ -318,9 +318,9 @@ const AddAmount = () => {
               </div>
             </div>
 
-            {tasks?.years?.map(
+            {tasks?.imam?.map(
               (yearData) =>
-                // Apply year filter if selected, or display all years
+                // Apply year filter if selected, or display all.imam
                 (!filterYear || filterYear === yearData?.year) && (
                   <div key={yearData?.year} style={{ marginTop: "20px" }}>
                     <div
@@ -393,4 +393,4 @@ const AddAmount = () => {
   );
 };
 
-export default AddAmount;
+export default AddAmountForImam;

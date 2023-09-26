@@ -21,12 +21,16 @@ import Donate from "./Components/Donate/Donate";
 import ShowUserPublic from "./Components/UsersPublic/ShowUserPublic";
 
 // UserForAdmin
-import ShowUserAdmin from "./Components/Admin/Rupess/ShowUserAdmin";
+import ShowUserForMosqueAdmin from "./Components/Admin/UserForMosque/ShowUserForMosqueAdmin";
 
 
 
 // Import Addamount
-import AddAmount from "./Components/Admin/Rupess/AddAmount";
+import AddAmount from "./Components/Admin/UserForMosque/AddAmount";
+
+// For imam
+import ShowUserForImamAdmin from "./Components/Admin/UserForImam/ShowUserForImamAdmin";
+import AddAmountForImam from "./Components/Admin/UserForImam/AddAmountForImam";
 
 // React router
 import {
@@ -69,8 +73,10 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/showUserAdmin" element={<ShowUserAdmin />} />
+        <Route path="/showUserForMosqueAdmin" element={<ShowUserForMosqueAdmin />} />
         <Route path="/addAmount/:id" element={<AddAmount />} />
+        <Route path='/showUserForImamAdmin' element={<ShowUserForImamAdmin />} />
+        <Route path="/addAmountForImam/:id" element={<AddAmountForImam/>}/>
       </Route>
     )
   );

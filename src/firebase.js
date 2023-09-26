@@ -110,7 +110,19 @@ const createTask = async (userName, phoneNumber, fatherName, year, amount) => {
       userName,
       phoneNumber,
       fatherName,
-      years: [
+      mosque: [
+        {
+          year,
+          months: [
+            {
+              date: new Date().getDate(),
+              month: new Date().getMonth() + 1,
+              amount,
+            },
+          ],
+        },
+      ],
+      imam: [
         {
           year,
           months: [

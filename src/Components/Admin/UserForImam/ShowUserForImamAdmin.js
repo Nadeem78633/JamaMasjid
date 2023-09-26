@@ -17,11 +17,9 @@ import { NavLink } from "react-router-dom";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
-
-
 import { getAllTasks } from "../../../firebase";
 
-function ShowUserAdmin() {
+function ShowUserForImamAdmin() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,11 +60,11 @@ function ShowUserAdmin() {
               style={{
                 color: "grey",
                 fontFamily: "Poppins",
-                fontSize: "14px",
-                fontWeight: "400",
+                fontSize: "18px",
+                fontWeight: "500",
               }}
             >
-              Users
+              Users For Imam
             </Typography>
 
             <Grid container spacing={2}>
@@ -85,7 +83,7 @@ function ShowUserAdmin() {
                                 fontWeight: "600",
                               }}
                               sx={{
-                                background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                                background: `linear-gradient(135deg, #2EB62C 0%, #ABE098 100%)`,
                               }}
                             >
                               {book.userName.slice(0, 1).toUpperCase()}
@@ -124,7 +122,7 @@ function ShowUserAdmin() {
                             {book.phoneNumber}
                           </Typography>
                           <NavLink
-                            to={`/addAmount/${book.id}`}
+                            to={`/addAmountForImam/${book.id}`}
                             style={({ isActive }) => ({
                               textDecoration: "none",
                             })}
@@ -146,4 +144,4 @@ function ShowUserAdmin() {
   );
 }
 
-export default ShowUserAdmin;
+export default ShowUserForImamAdmin;

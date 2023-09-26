@@ -70,7 +70,7 @@ const Dashboard = () => {
                 }}
               >
                 <NavLink
-                  to="/showUserAdmin"
+                  to="/showUserForMosqueAdmin"
                   style={{ textDecoration: "none", color: "white" }}
                 >
                   <Avatar
@@ -102,7 +102,61 @@ const Dashboard = () => {
                     marginTop: "8px",
                   }}
                 >
-                  Users
+                  Mosque Users
+                </Typography>
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={4} md={4} sm={4}>
+          <Card style={{ background: "#f3f2f2" }}>
+            <CardContent
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <NavLink
+                  to="/showUserForImamAdmin"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  <Avatar
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      background: `linear-gradient(135deg, #2EB62C 0%, #ABE098 100%)`,
+                    }}
+                  >
+                    <PeopleAltRoundedIcon
+                      style={{
+                        height: "30px",
+                        width: "30px",
+                        color: "black",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </Avatar>
+                </NavLink>
+                <Typography
+                  style={{
+                    fontFamily: "Poppins",
+                    fontSize: "16px",
+                    fontWeight: "600",
+
+                    marginTop: "8px",
+                  }}
+                >
+                  Imam Users
                 </Typography>
               </div>
             </CardContent>
