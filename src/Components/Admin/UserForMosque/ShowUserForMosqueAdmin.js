@@ -65,21 +65,23 @@ function ShowUserForMosqueAdmin() {
           <CircularProgress color="success" />
         </div>
       ) : (
-        <Card style={{ marginTop: "100px" }}>
+        <Card style={{ marginTop: "100px", boxShadow: "none" }}>
           <div
             style={{
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
               marginTop: "10px",
+              marginBottom: "20px",
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                width: "200px",
+                width: "220px",
                 borderRadius: "5px",
+                paddingRight: "5px",
                 padding: "3px",
                 boxShadow:
                   "0 5px 5px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1)",
@@ -114,110 +116,115 @@ function ShowUserForMosqueAdmin() {
               />
             </div>
           </div>
+          <Card>
+            <CardContent>
+              <Typography
+                style={{
+                  color: "grey",
+                  fontFamily: "Poppins",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                }}
+              >
+                Users For Mosque
+              </Typography>
 
-          <CardContent>
-            <Typography
-              style={{
-                color: "grey",
-                fontFamily: "Poppins",
-                fontSize: "18px",
-                fontWeight: "500",
-              }}
-            >
-              Users For Mosque
-            </Typography>
-
-            <Grid container spacing={2}>
-              {books
-                .filter((post) => {
-                  if (query === "") {
-                    return post;
-                  } else if (
-                    post.userName.toLowerCase().includes(query.toLowerCase())
-                  ) {
-                    return post;
-                  } else if (
-                    post.fatherName.toLowerCase().includes(query.toLowerCase())
-                  ) {
-                    return post;
-                  } else if (
-                    post.phoneNumber.toLowerCase().includes(query.toLowerCase())
-                  ) {
-                    return post;
-                  }
-                })
-                .map((book) => (
-                  <Grid key={book.id} item xs={12} md={6} sm={12}>
-                    <Box sx={{ width: "100%" }}>
-                      <nav aria-label="main mailbox folders">
-                        <List>
-                          <ListItem disablePadding>
-                            <ListItemIcon>
-                              <Avatar
-                                variant="rounded"
-                                style={{
-                                  color: "white",
-                                  fontFamily: "Poppins",
-                                  fontWeight: "600",
-                                }}
-                                sx={{
-                                  background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
-                                }}
-                              >
-                                {book.userName.slice(0, 1).toUpperCase()}
-                              </Avatar>
-                            </ListItemIcon>
-                            <ListItemText>
+              <Grid container spacing={2}>
+                {books
+                  .filter((post) => {
+                    if (query === "") {
+                      return post;
+                    } else if (
+                      post.userName.toLowerCase().includes(query.toLowerCase())
+                    ) {
+                      return post;
+                    } else if (
+                      post.fatherName
+                        .toLowerCase()
+                        .includes(query.toLowerCase())
+                    ) {
+                      return post;
+                    } else if (
+                      post.phoneNumber
+                        .toLowerCase()
+                        .includes(query.toLowerCase())
+                    ) {
+                      return post;
+                    }
+                  })
+                  .map((book) => (
+                    <Grid key={book.id} item xs={12} md={6} sm={12}>
+                      <Box sx={{ width: "100%" }}>
+                        <nav aria-label="main mailbox folders">
+                          <List>
+                            <ListItem disablePadding>
+                              <ListItemIcon>
+                                <Avatar
+                                  variant="rounded"
+                                  style={{
+                                    color: "white",
+                                    fontFamily: "Poppins",
+                                    fontWeight: "600",
+                                  }}
+                                  sx={{
+                                    background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                                  }}
+                                >
+                                  {book.userName.slice(0, 1).toUpperCase()}
+                                </Avatar>
+                              </ListItemIcon>
+                              <ListItemText>
+                                <Typography
+                                  style={{
+                                    fontSize: "18px",
+                                    fontFamily: "Poppins",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  {book.userName}
+                                </Typography>
+                                <Typography
+                                  style={{
+                                    fontSize: "14px",
+                                    fontFamily: "Poppins",
+                                    fontWeight: "500",
+                                    color: "#8789A3",
+                                  }}
+                                >
+                                  {book.fatherName}
+                                </Typography>
+                              </ListItemText>
                               <Typography
                                 style={{
-                                  fontSize: "18px",
-                                  fontFamily: "Poppins",
-                                  fontWeight: "600",
-                                }}
-                              >
-                                {book.userName}
-                              </Typography>
-                              <Typography
-                                style={{
-                                  fontSize: "14px",
-                                  fontFamily: "Poppins",
-                                  fontWeight: "500",
                                   color: "#8789A3",
+                                  fontSize: "14px",
+                                  fontWeight: "500",
+                                  paddingRight: "40px",
+                                  fontFamily: "Poppins",
                                 }}
                               >
-                                {book.fatherName}
+                                {book.phoneNumber}
                               </Typography>
-                            </ListItemText>
-                            <Typography
-                              style={{
-                                color: "#8789A3",
-                                fontSize: "14px",
-                                fontWeight: "500",
-                                paddingRight: "40px",
-                                fontFamily: "Poppins",
-                              }}
-                            >
-                              {book.phoneNumber}
-                            </Typography>
-                            <NavLink
-                              to={`/addAmount/${book.id}`}
-                              style={({ isActive }) => ({
-                                textDecoration: "none",
-                              })}
-                            >
-                              <ArrowForwardIosIcon
-                                style={{ color: "#8789A3" }}
-                              />
-                            </NavLink>
-                          </ListItem>
-                        </List>
-                      </nav>
-                      <Divider style={{ width: "100%" }} />
-                    </Box>
-                  </Grid>
-                ))}
-            </Grid>
-          </CardContent>
+                              <NavLink
+                                to={`/addAmount/${book.id}`}
+                                style={({ isActive }) => ({
+                                  textDecoration: "none",
+                                })}
+                              >
+                                <ArrowForwardIosIcon
+                                  style={{ color: "#8789A3" }}
+                                />
+                              </NavLink>
+                            </ListItem>
+                          </List>
+                        </nav>
+                        <Divider style={{ width: "100%" }} />
+                      </Box>
+                    </Grid>
+                  ))}
+              </Grid>
+            </CardContent>
+          </Card>
         </Card>
       )}
     </>
