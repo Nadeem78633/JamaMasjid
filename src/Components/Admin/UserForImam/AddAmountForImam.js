@@ -6,6 +6,10 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 
+// React Toastify is used to show the alert
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 //Firebase
 
 import { getTaskById, updateTask } from "../../../firebase";
@@ -73,11 +77,10 @@ const AddAmountForImam = () => {
 
   const handleClose = () => {
     setOpen(false);
-    };
-      const handleDate = (newDate) => {
-          setDate(newDate);
-        
-      };
+  };
+  const handleDate = (newDate) => {
+    setDate(newDate);
+  };
 
   // Data fetching using firebase
 
@@ -128,72 +131,78 @@ const AddAmountForImam = () => {
 
   //Logic to add amount
 
-const updateTaskWithAmount = () => {
-  // Check if the date is empty
-  if (!date) {
-    alert("Please select a date before adding an amount.");
-    return;
-  }
+  const updateTaskWithAmount = () => {
+    // Check if the date is empty
+    if (!date) {
+      alert("Please select a date before adding an amount.");
+      return;
+    }
 
-  // Get the current year and month
-  const currentYear = year;
-  const currentMonth = month;
+    // Get the current year and month
+    const currentYear = year;
+    const currentMonth = month;
 
-  // Create a copy of the task data
-  const updatedTaskData = { ...tasks };
+    // Create a copy of the task data
+    const updatedTaskData = { ...tasks };
 
-  // Find the index of the year for the selected year in the database
-  const yearIndex = updatedTaskData.imam.findIndex(
-    (year) => year.year === currentYear
-  );
-
-  if (yearIndex !== -1) {
-    // Year exists in the database, update the amount for the current month
-    const yearData = updatedTaskData.imam[yearIndex];
-
-    // Find the index of the current month in the year's data
-    const monthIndex = yearData.months.findIndex(
-      (month) => month.month === currentMonth
+    // Find the index of the year for the selected year in the database
+    const yearIndex = updatedTaskData.imam.findIndex(
+      (year) => year.year === currentYear
     );
 
-    if (monthIndex !== -1) {
-      // Month exists, update the amount
-      yearData.months[monthIndex].amount += newAmount;
+    if (yearIndex !== -1) {
+      // Year exists in the database, update the amount for the current month
+      const yearData = updatedTaskData.imam[yearIndex];
+
+      // Find the index of the current month in the year's data
+      const monthIndex = yearData.months.findIndex(
+        (month) => month.month === currentMonth
+      );
+
+      if (monthIndex !== -1) {
+        // Month exists, update the amount
+        yearData.months[monthIndex].amount += newAmount;
+      } else {
+        // Month doesn't exist, create a new month object
+        yearData.months.push({
+          day: day,
+          month: month,
+          amount: newAmount,
+        });
+      }
     } else {
-      // Month doesn't exist, create a new month object
-      yearData.months.push({
-        day: day,
-        month: month,
-        amount: newAmount,
+      // Year doesn't exist, create a new year object
+      updatedTaskData.imam.push({
+        year: currentYear,
+        months: [
+          {
+            day: day,
+            month: currentMonth,
+            amount: newAmount,
+          },
+        ],
       });
     }
-  } else {
-    // Year doesn't exist, create a new year object
-    updatedTaskData.imam.push({
-      year: currentYear,
-      months: [
-        {
-          day: day,
-          month: currentMonth,
-          amount: newAmount,
-        },
-      ],
-    });
-  }
 
-  // Update the task data in Firebase Firestore
-  updateTask(params.id, updatedTaskData)
-    .then(() => {
-      console.log("Task updated successfully");
-      setNewAmount("");
+    // Update the task data in Firebase Firestore
+    updateTask(params.id, updatedTaskData)
+      .then(() => {
+        console.log("Task updated successfully");
+        // Calling Toastify function inside the submit
+        displayLoginNotification();
+        setNewAmount("");
         setOpen(false);
-          setDate(null);
-    })
-    .catch((error) => {
-      console.error("Error updating task:", error);
-    });
-};
+        setDate(null);
+      })
+      .catch((error) => {
+        console.error("Error updating task:", error);
+      });
+  };
 
+  // Function for react toastify
+  const displayLoginNotification = () => {
+    toast.success(`${newAmount} Rupees Added`);
+  };
 
   return (
     <>
@@ -241,8 +250,8 @@ const updateTaskWithAmount = () => {
               alignItems: "center",
             }}
           >
-                      <TextField
-                          style={{marginBottom:'10px'}}
+            <TextField
+              style={{ marginBottom: "10px" }}
               variant="standard"
               size="small"
               type="number"
@@ -424,6 +433,19 @@ const updateTaskWithAmount = () => {
             )}
           </CardContent>
         </Card>
+        {/* Toastify */}
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </>
   );

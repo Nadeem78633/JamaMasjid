@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+// React Toastify is used to show the alert
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 //Firebase
 
 import { getTaskById, updateTask } from "../../../firebase";
@@ -184,6 +188,8 @@ const AddAmount = () => {
     // Update the task data in Firebase Firestore
     updateTask(params.id, updatedTaskData)
       .then(() => {
+        // Calling Toastify function inside the submit
+        displayLoginNotification();
         console.log("Task updated successfully");
         setNewAmount("");
         setDate(null);
@@ -193,7 +199,10 @@ const AddAmount = () => {
         console.error("Error updating task:", error);
       });
   };
-
+  // Function for react toastify
+  const displayLoginNotification = () => {
+    toast.success(`${newAmount} Rupees Added`)
+  };
   return (
     <>
       <Dialog
@@ -423,6 +432,19 @@ const AddAmount = () => {
             )}
           </CardContent>
         </Card>
+        {/* Toastify */}
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </>
   );

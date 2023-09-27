@@ -23,7 +23,8 @@ import { getAllTasks } from "../../firebase";
 function ShowUserPublic() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
-   const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     // Simulate a loading delay with setTimeout
@@ -41,6 +42,10 @@ function ShowUserPublic() {
     }, 0.5);
   }, []);
 
+  const handleQuery = (e) => {
+    setQuery(e.target.value);
+  };
+
   return (
     <>
       {loading ? (
@@ -56,6 +61,7 @@ function ShowUserPublic() {
         </div>
       ) : (
         <Card style={{ marginTop: "100px" }}>
+          <input value={query} onChange={handleQuery} />
           <CardContent>
             <Typography
               style={{
@@ -69,74 +75,94 @@ function ShowUserPublic() {
             </Typography>
 
             <Grid container spacing={2}>
-              {books.map((book) => (
-                <Grid key={book.id} item xs={12} md={6} sm={12}>
-                  <Box sx={{ width: "100%" }}>
-                    <nav aria-label="main mailbox folders">
-                      <List>
-                        <ListItem disablePadding>
-                          <ListItemIcon>
-                            <Avatar
-                              variant="rounded"
-                              style={{
-                                color: "white",
-                                fontFamily: "Poppins",
-                                fontWeight: "600",
-                              }}
-                              sx={{
-                                background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
-                              }}
-                            >
-                              {book.userName.slice(0, 1).toUpperCase()}
-                            </Avatar>
-                          </ListItemIcon>
-                          <ListItemText>
+              {books
+                .filter((post) => {
+                  if (query === "") {
+                    return post;
+                  } else if (
+                    post.userName.toLowerCase().includes(query.toLowerCase())
+                  ) {
+                    return post;
+                  } else if (
+                    post.fatherName.toLowerCase().includes(query.toLowerCase())
+                  ) {
+                    return post;
+                  } else if (
+                    post.phoneNumber.toLowerCase().includes(query.toLowerCase())
+                  ) {
+                    return post;
+                  }
+                })
+                .map((book) => (
+                  <Grid key={book.id} item xs={12} md={6} sm={12}>
+                    <Box sx={{ width: "100%" }}>
+                      <nav aria-label="main mailbox folders">
+                        <List>
+                          <ListItem disablePadding>
+                            <ListItemIcon>
+                              <Avatar
+                                variant="rounded"
+                                style={{
+                                  color: "white",
+                                  fontFamily: "Poppins",
+                                  fontWeight: "600",
+                                }}
+                                sx={{
+                                  background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                                }}
+                              >
+                                {book.userName.slice(0, 1).toUpperCase()}
+                              </Avatar>
+                            </ListItemIcon>
+                            <ListItemText>
+                              <Typography
+                                style={{
+                                  fontSize: "18px",
+                                  fontFamily: "Poppins",
+                                  fontWeight: "600",
+                                }}
+                              >
+                                {book.userName}
+                              </Typography>
+                              <Typography
+                                style={{
+                                  fontSize: "14px",
+                                  fontFamily: "Poppins",
+                                  fontWeight: "500",
+                                  color: "#8789A3",
+                                }}
+                              >
+                                {book.fatherName}
+                              </Typography>
+                            </ListItemText>
                             <Typography
                               style={{
-                                fontSize: "18px",
-                                fontFamily: "Poppins",
-                                fontWeight: "600",
-                              }}
-                            >
-                              {book.userName}
-                            </Typography>
-                            <Typography
-                              style={{
-                                fontSize: "14px",
-                                fontFamily: "Poppins",
-                                fontWeight: "500",
                                 color: "#8789A3",
+                                fontSize: "14px",
+                                fontWeight: "500",
+                                paddingRight: "40px",
+                                fontFamily: "Poppins",
                               }}
                             >
-                              {book.fatherName}
+                              {book.phoneNumber}
                             </Typography>
-                          </ListItemText>
-                          <Typography
-                            style={{
-                              color: "#8789A3",
-                              fontSize: "14px",
-                              fontWeight: "500",
-                              paddingRight: "40px",
-                              fontFamily: "Poppins",
-                            }}
-                          >
-                            {book.phoneNumber}
-                          </Typography>
-                          <NavLink
-                            to={`/user/${book.id}`}
-                            style={({ isActive }) => ({
-                              textDecoration: "none",
-                            })}
-                          >
-                            <ArrowForwardIosIcon style={{ color: "#8789A3" }} />
-                          </NavLink>
-                        </ListItem>
-                      </List>
-                    </nav>
-                    <Divider style={{ width: "100%" }} />
-                  </Box>
-                </Grid>
-              ))}
+                            <NavLink
+                              to={`/user/${book.id}`}
+                              style={({ isActive }) => ({
+                                textDecoration: "none",
+                              })}
+                            >
+                              <ArrowForwardIosIcon
+                                style={{ color: "#8789A3" }}
+                              />
+                            </NavLink>
+                          </ListItem>
+                        </List>
+                      </nav>
+                      <Divider style={{ width: "100%" }} />
+                    </Box>
+                  </Grid>
+                ))}
             </Grid>
           </CardContent>
         </Card>
