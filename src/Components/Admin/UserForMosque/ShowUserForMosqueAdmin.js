@@ -14,11 +14,16 @@ import Avatar from "@mui/material/Avatar";
 import { NavLink } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 
+// Import searchSecond
+import SearchSecond from "../../icons/searchSecond.svg";
+
 // Loader
 
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { getAllTasks } from "../../../firebase";
+
+import "./input.css";
 
 function ShowUserForMosqueAdmin() {
   const [books, setBooks] = useState([]);
@@ -65,14 +70,15 @@ function ShowUserForMosqueAdmin() {
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "center",
+                justifyContent: "center",
+              marginTop:'10px'
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-              
+
                 borderRadius: "5px",
                 padding: "3px",
                 boxShadow:
@@ -85,9 +91,10 @@ function ShowUserForMosqueAdmin() {
                   marginTop: "5px",
                   borderRadius: "0 10px 10px 0",
                   cursor: "pointer",
+                  paddingLeft: "20px",
                 }}
               >
-                <SearchIcon />
+                <img src={SearchSecond} alt="search" />
               </span>
               <input
                 type="text"
