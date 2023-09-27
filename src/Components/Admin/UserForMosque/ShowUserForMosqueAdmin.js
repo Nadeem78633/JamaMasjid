@@ -70,15 +70,15 @@ function ShowUserForMosqueAdmin() {
             style={{
               display: "flex",
               flexDirection: "row",
-                justifyContent: "center",
-              marginTop:'10px'
+              justifyContent: "center",
+              marginTop: "10px",
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-
+                width: "200px",
                 borderRadius: "5px",
                 padding: "3px",
                 boxShadow:
@@ -108,6 +108,7 @@ function ShowUserForMosqueAdmin() {
                   backgroundColor: "transparent",
                   fontSize: "16px",
                   fontFamily: "Poppins",
+                  width: "90px",
                 }}
                 placeholder="Search..."
               />
