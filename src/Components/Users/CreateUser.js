@@ -68,6 +68,7 @@ function CreateUser() {
     event.preventDefault();
     if (phoneNumber.length !== 10) {
       setIsError(true);
+      return
     }
     if (date === null) {
       setHasError(true); // Set the date error flag
