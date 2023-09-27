@@ -66,11 +66,14 @@ function CreateUser() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-     if (phoneNumber.length !== 10 || date === null) {
+     if (phoneNumber.length !== 10 ) {
        setIsError(true);
-       setHasError(true); // Set the date error flag
-       return; // Return early without creating the user
+    
      }
+    if (date === null) {
+      setHasError(true); // Set the date error flag
+      return; // Return early without creating the user
+    }
     
     createTask(userName, phoneNumber, fatherName, year, month, day, 0); // Replace 0 with the actual amount value
     setUserName("");
@@ -168,6 +171,7 @@ function CreateUser() {
                           required: true,
                           size: "small",
                           error: hasError,
+                          
                         },
                       }}
                     />
