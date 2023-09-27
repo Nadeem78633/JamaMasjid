@@ -70,6 +70,9 @@ function CreateUser() {
       setIsError(true);
       return; // Return early without creating the book
     }
+    if (day === null || year === null || month === null) {
+      return;
+    }
     createTask(userName, phoneNumber, fatherName, year, month, day, 0); // Replace 0 with the actual amount value
     setUserName("");
     setPhoneNumber("");
