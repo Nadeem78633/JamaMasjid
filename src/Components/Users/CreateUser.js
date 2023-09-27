@@ -60,21 +60,21 @@ function CreateUser() {
     toast.success("User Added Successfully !");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (phoneNumber.length !== 10) {
-      setIsError(true);
-      return; // Return early without creating the book
-    }
-    createTask(userName, phoneNumber, fatherName, year, month, day, 0); // Replace 0 with the actual amount value
-    setUserName("");
-    setPhoneNumber("");
-    setFatherName("");
-    setDate(null);
-    // Calling Toastify function inside the submit
-    displayLoginNotification();
-    console.log(userName, phoneNumber, fatherName, year, month, day);
-  };
+const handleSubmit = (event) => {
+  event.preventDefault();
+  if (phoneNumber.length !== 10 || date === null) {
+    setIsError(true);
+    return; // Return early without creating the user
+  }
+  createTask(userName, phoneNumber, fatherName, year, month, day, 0);
+  setUserName("");
+  setPhoneNumber("");
+  setFatherName("");
+  setDate(null);
+  setIsError(false); // Reset the error state
+  displayLoginNotification();
+  console.log(userName, phoneNumber, fatherName, year, month, day);
+};
 
   return (
     <>
