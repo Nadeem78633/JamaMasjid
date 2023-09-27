@@ -12,7 +12,6 @@ import Typography from "@mui/material/Typography";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Avatar from "@mui/material/Avatar";
 import { NavLink } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
 
 // Import searchSecond
 import SearchSecond from "../../icons/searchSecond.svg";

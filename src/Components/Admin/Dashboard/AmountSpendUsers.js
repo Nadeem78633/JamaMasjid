@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Card,
@@ -8,15 +8,30 @@ import {
   Box,
 } from "@mui/material";
 
+import { getAllTasks } from "../../../firebase";
+
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import WalletIcon from "@mui/icons-material/Wallet";
 
-
 import Divider from "@mui/material/Divider";
 const AmountSpendUsers = () => {
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    // Simulate a loading delay with setTimeout
+    setTimeout(() => {
+      getAllTasks()
+        .then((tasks) => {
+          setBooks(tasks);
+        })
+        .catch((error) => {
+          console.error("Error fetching tasks:", error);
+        });
+    }, 0.5);
+  }, [books]);
+  const totalUsers = books.length;
   return (
     <>
       {/* Total Users Amount Investment */}
@@ -85,7 +100,7 @@ const AmountSpendUsers = () => {
                     marginTop: "10px",
                   }}
                 >
-                  100+
+                  {totalUsers}
                 </Typography>
               </div>
             </CardContent>
@@ -224,6 +239,6 @@ const AmountSpendUsers = () => {
       />
     </>
   );
-}
+};
 
-export default AmountSpendUsers
+export default AmountSpendUsers;
