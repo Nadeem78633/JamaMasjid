@@ -117,7 +117,7 @@ const createTask = async (userName, phoneNumber, fatherName, year,month,day, amo
             {
               day: day,
               month: month,
-              amount,
+              amount: amount,
             },
           ],
         },
@@ -129,7 +129,7 @@ const createTask = async (userName, phoneNumber, fatherName, year,month,day, amo
             {
               day: day,
               month: month,
-              amount,
+              amount: amount,
             },
           ],
         },

@@ -432,8 +432,8 @@ const AddAmountForImam = () => {
                 )
             )}
           </CardContent>
-        </Card>
-        {/* Toastify */}
+              </Card>
+               {/* Toastify */}
         <ToastContainer
           position="top-right"
           autoClose={2000}
