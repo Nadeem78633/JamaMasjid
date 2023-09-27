@@ -141,7 +141,7 @@ const Dashboard = () => {
                       style={{
                         height: "30px",
                         width: "30px",
-                        color: "black",
+
                         cursor: "pointer",
                       }}
                     />
@@ -190,7 +190,7 @@ const Dashboard = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+                      background: `linear-gradient(135deg, gray 0%, black 100%)`,
                     }}
                   >
                     <DeleteRoundedIcon
