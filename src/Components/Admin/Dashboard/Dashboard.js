@@ -6,6 +6,19 @@ import { getAllTasks } from "../../../firebase";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
+
+
+
+// List import
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
+
 // Components
 import AmountSpendUsers from "./AmountSpendUsers";
 import { NavLink } from "react-router-dom";
@@ -26,6 +39,36 @@ const Dashboard = () => {
           paddingRight: "5%",
         }}
       >
+        {/* New Grid */}
+
+        <Grid item xs={12} md={6} sm={12}>
+          <Box sx={{ width: "100%" }}>
+            <nav aria-label="main mailbox folders">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemIcon>
+                   
+                      <AddUser />
+                 
+                  </ListItemIcon>
+                  <ListItemText></ListItemText>
+                  <Typography
+                    style={{
+                      fontSize: "18px",
+                      fontFamily: "Poppins",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Add User
+                  </Typography>
+                  
+                </ListItem>
+              </List>
+            </nav>
+            <Divider style={{ width: "100%" }} />
+          </Box>
+        </Grid>
+
         <AmountSpendUsers />
 
         <Grid item xs={6} md={6} sm={6}>

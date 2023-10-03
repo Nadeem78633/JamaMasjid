@@ -9,6 +9,9 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Avatar from "@mui/material/Avatar";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
+// 
+import Plus from '../../icons/plus.svg'
+
 import Slide from "@mui/material/Slide";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -31,13 +34,15 @@ const AddUser = () => {
   return (
     <div>
       <Avatar
+        variant="rounded"
         style={{
           width: "45px",
           height: "45px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          background: `linear-gradient(135deg, #DF98FA 0%, #9055FF 100%)`,
+          background: "white",
+          border: "2px solid  rgba(187, 196, 206, 0.35)",
         }}
       >
         <AddRoundedIcon
@@ -45,7 +50,7 @@ const AddUser = () => {
           style={{
             height: "45px",
             width: "45px",
-            color: "white",
+            color: "#863ED5",
             cursor: "pointer",
           }}
         />
