@@ -56,7 +56,7 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <CardContent style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+            <CardContent>
               <Typography
                 style={{
                   height: "48.3px",
@@ -84,6 +84,7 @@ const Login = () => {
                   fontSize: "16px",
                   lineHeight: "19px",
                   marginBottom: "10px",
+                  marginLeft: "5%",
                 }}
               >
                 Email address
@@ -93,13 +94,14 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
-                  width: "100%",
+                  width: "90%",
                   height: "43.91px",
                   fontFamily: "Poppins",
                   fontStyle: "normal",
                   fontWeight: "400",
                   fontSize: "16px",
                   lineHeight: "19px",
+                  marginLeft: "5%",
                 }}
                 type="text"
                 placeholder="Email"
@@ -114,6 +116,7 @@ const Login = () => {
                   lineHeight: "19px",
                   marginBottom: "10px",
                   marginTop: "10px",
+                  marginLeft: "5%",
                 }}
               >
                 Password
@@ -121,13 +124,14 @@ const Login = () => {
               <TextField
                 variant="standard"
                 style={{
-                  width: "100%",
+                  width: "90%",
                   height: "43.91px",
                   fontFamily: "Poppins",
                   fontStyle: "normal",
                   fontWeight: "400",
                   fontSize: "16px",
                   lineHeight: "19px",
+                  marginLeft: "5%",
                 }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -138,7 +142,7 @@ const Login = () => {
                 <Link
                   to="/reset"
                   style={{
-                    width: "100%",
+                    width: "90%",
                     height: "20.86px",
                     fontFamily: "Poppins",
                     fontStyle: "normal",
@@ -149,6 +153,7 @@ const Login = () => {
                     color: "gray",
                     textDecoration: "none",
                     marginTop: "20px",
+                    marginLeft: "5%",
                   }}
                 >
                   Forgot Password?
@@ -166,7 +171,7 @@ const Login = () => {
                   variant="contained"
                   style={{
                     textTransform: "none",
-                    width: "356.77px",
+                    width: "90%",
                     height: "43.91px",
                     background: "linear-gradient(45deg, #dd47f9, #6fc9e0)",
                     borderRadius: "10px",
