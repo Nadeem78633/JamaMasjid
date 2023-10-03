@@ -27,7 +27,7 @@ const Login = () => {
       <Grid
         container
         style={{
-          backgroundImage: `url(${gradient})`,
+       
           width: "100%",
           height: "100%",
         }}
@@ -43,6 +43,8 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            paddingLeft: '20px',
+      
           }}
         >
           <Card
@@ -56,7 +58,7 @@ const Login = () => {
               flexDirection: "column",
               alignItems: "center",
 
-           
+         
             }}
           >
             <CardContent>
