@@ -56,7 +56,7 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <CardContent>
+            <CardContent style={{ paddingLeft: "30px", paddingRight: "30px" }}>
               <Typography
                 style={{
                   height: "48.3px",
