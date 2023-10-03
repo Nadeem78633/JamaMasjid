@@ -42,7 +42,7 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            boxShadow:'none'
+          
           }}
         >
           <CardContent>
