@@ -26,11 +26,10 @@ const Login = () => {
     <>
       <div
         style={{
-          marginTop: "90px",
-
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "center",
           alignItems: "center",
+          height: "100vh",
         }}
       >
         <Card
@@ -42,7 +41,6 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          
           }}
         >
           <CardContent>
