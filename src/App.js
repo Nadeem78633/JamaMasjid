@@ -23,8 +23,6 @@ import ShowUserPublic from "./Components/UsersPublic/ShowUserPublic";
 // UserForAdmin
 import ShowUserForMosqueAdmin from "./Components/Admin/UserForMosque/ShowUserForMosqueAdmin";
 
-
-
 // Import Addamount
 import AddAmount from "./Components/Admin/UserForMosque/AddAmount";
 
@@ -41,11 +39,6 @@ import {
 import { RouterProvider } from "react-router";
 import UserDetails from "./Components/Users/UserDetails";
 import AddUser from "./Components/Admin/Dashboard/AddUser";
-
-
-
-// Date
-import DatePickers from "./Components/DatePicker";
 
 const App = () => {
   const { fetchBooks } = useContext(UserContext);
@@ -78,14 +71,16 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/showUserForMosqueAdmin" element={<ShowUserForMosqueAdmin />} />
+        <Route
+          path="/showUserForMosqueAdmin"
+          element={<ShowUserForMosqueAdmin />}
+        />
         <Route path="/addAmount/:id" element={<AddAmount />} />
-        <Route path='/showUserForImamAdmin' element={<ShowUserForImamAdmin />} />
+        <Route
+          path="/showUserForImamAdmin"
+          element={<ShowUserForImamAdmin />}
+        />
         <Route path="/addAmountForImam/:id" element={<AddAmountForImam />} />
-
-        <Route path="/date" element={<DatePickers/>}/>
-        
-
       </Route>
     )
   );

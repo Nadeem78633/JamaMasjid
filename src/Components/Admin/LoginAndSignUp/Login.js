@@ -56,7 +56,7 @@ const Login = () => {
               flexDirection: "column",
               alignItems: "center",
 
-              width: "100%",
+           
             }}
           >
             <CardContent>
